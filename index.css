@@ -92,23 +92,23 @@ p {
     color: white;}
 
 .project_teammates_title_right {
-    font-family: 'Source Code Pro', monospace;
-    font-weight: bold;
-    font-size: 30px;
-    position: relative;
-    top: -55%;
-    left: 81%;
-    width: 15%;
-    text-align: center;
-}
-.project_teammates_title_left {
     position: relative;
     font-family: 'Source Code Pro', monospace;
     font-weight: bold;
     font-size: 30px;
     top: -50.5%;
-    left: 4%;
-    width: 15%;
+    left: 78.25%;
+    width: 20%;
+    text-align: center;
+}
+.project_teammates_title_left {
+    position: absolute;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: bold;
+    font-size: 30px;
+    top: 15%;
+    left: 2%;
+    width: 20%;
     text-align: center;
 }
 
@@ -206,3 +206,6 @@ p {
     background-color: lightseagreen;}
 .robi-card-back, .darius-card-back, .daniel-card-back, .david-card-back {
     transform: rotateY(180deg);}
+.robi-card-back {
+    margin-top: 9.5%;
+    height: 75%;}

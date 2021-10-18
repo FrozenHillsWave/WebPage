@@ -9,22 +9,37 @@ function minimalize() {
   }
 
 document.addEventListener("keydown", function () {
-  commands()
+  if (event.keyCode == "13") {
+    commands()
+  }
 });
 
 function commands() {
+    commandList = ["ping", "pong", "partnereink", "logonk", "unalom"]
     var command = document.getElementById("commandprompt_input").value;
     switch (command) {
         case "help":
             document.getElementById("output").innerHTML = "Használható parancsok:<br> \
-            -ping <br>\
-            -pong";
+            -"+commandList[0]+"<br>\
+            -"+commandList[1]+"<br>\
+            -"+commandList[2]+"<br>\
+            -"+commandList[3]+"<br>\
+            -"+commandList[4];
             break;
         case "ping":
           document.getElementById("output").innerHTML = "PONG"
           break;
         case "pong":
           document.getElementById("output").innerHTML = "PING"
+          break;
+        case "partnereink":
+          window.open("partnereink.html")
+          break;
+        case "logonk":
+          window.open("logonk.html")
+          break;
+        case "unalom":
+          window.open("unalom.html")
           break;
     
         default:
