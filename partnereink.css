@@ -45,7 +45,7 @@ h3 {
     font-family: 'Comfortaa', cursive;
     font-size: 20px;
     top: 60%;
-    left: 55%;
+    left: 60%;
     transform: skew(-10deg);
 }
 .robi {
@@ -67,9 +67,14 @@ h3 {
 }
 
 #photo {
+    border-radius: 3%;
     position: relative;
     top: 30%;
     left: 5%;
     transform: skew(0deg);
     width: 50%;
+}
+
+strong {
+    font-weight: bolder;
 }

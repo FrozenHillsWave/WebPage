@@ -207,5 +207,4 @@ p {
 .robi-card-back, .darius-card-back, .daniel-card-back, .david-card-back {
     transform: rotateY(180deg);}
 .robi-card-back {
-    margin-top: 9.5%;
-    height: 75%;}
+    height: 100%;}
