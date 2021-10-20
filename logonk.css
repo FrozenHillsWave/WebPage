@@ -1,0 +1,13 @@
+.logo-holder {
+    position: relative;
+    border: 1px solid black;
+    width: 10%;
+    height: auto;
+}
+#logo {
+    width: 100%;
+}
+#logo-title {
+    font-size: large;
+    text-align: center;
+}
