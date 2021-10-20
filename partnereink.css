@@ -2,7 +2,8 @@
 
 body {
     background-image: url("https://onlyvectorbackgrounds.com/wp-content/uploads/2019/03/Subtle-Lines-Abstract-Gradient-Background-Purple.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: repeat-x;
 }
 
 a:any-link {
