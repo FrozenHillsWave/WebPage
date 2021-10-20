@@ -1,13 +1,56 @@
+body {
+    background-image: url("https://img.freepik.com/free-photo/texture-old-faded-vintage-paper-beige-retro-background-grunge-paper-with-spots-streaks_213524-157.jpg?size=626&ext=jpg");
+    background-size: cover;}
+
+/*Logokat és a cimet/dátumot tartó divet formázza meg*/
 .logo-holder {
-    position: relative;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    background-color: beige;
+    background-size: cover;
+    filter: brightness(0.75);
+    box-shadow: black 10px;
+    padding: 3% 2% 3% 2%;
     width: 10%;
-    height: auto;
-}
+    height: auto;}
+/*Megformmázza a logonkat*/
 #logo {
-    width: 100%;
-}
-#logo-title {
-    font-size: large;
+    filter: drop-shadow(0 0 0.75rem black);
+    width: 100%;}
+/*Logok tetején látható cim megformázására szoló id*/
+.logo-title {
+    /*border: black 1px solid;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     text-align: center;
-}
+    width: 60%;
+    position: absolute;
+    top: 5%;
+    margin-left: 5%;
+    font-size: large;}
+/*Logok alján látható dátum megformázására szoló id*/
+#logo-date {
+    /*border: black 1px solid;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    width: 45%;
+    position: absolute;
+    top: 75%;
+    margin-left: 15%;
+    font-size: large;
+    text-align: center;}
+#first {
+    position: relative;
+    top: 5%;
+    left: 80%;}
+#second {
+    position: absolute;
+    top: 25%;
+    left: 40%;}
+#second-title {
+    width: 100%;
+    left: -5%;}
+#third {
+    position: absolute;
+    top: 65%;
+    left: 10%;}
+#third-title {
+    width: 100%;
+    left: -5%;}
