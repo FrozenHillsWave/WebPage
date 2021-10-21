@@ -51,10 +51,10 @@ function commands() {
 window.onload = function() {
   HexGenerator()
 
-  document.getElementById("card0").style.backgroundColor = RobertColor;
-  document.getElementById("card1").style.backgroundColor = RobertColor;
-  document.getElementById("card2").style.backgroundColor = RobertColor;
-  document.getElementById("card3").style.backgroundColor = RobertColor;
+  document.getElementById("card0").style.backgroundColor = HexColor;
+  document.getElementById("card1").style.backgroundColor = HexColor;
+  document.getElementById("card2").style.backgroundColor = HexColor;
+  document.getElementById("card3").style.backgroundColor = HexColor;
 }
 
 
@@ -64,8 +64,8 @@ function HexGenerator() {
     HEX = Math.floor(Math.random() * (9 - 1 + 1) + 1);
     HEXHolder.push(HEX.toString())
   };
-  RobertColor = "#"
+  HexColor = "#"
   for (let index = 0; index < HEXHolder.length; index++) {
-    RobertColor += HEXHolder[index]
+    HexColor += HEXHolder[index]
   }
 }
