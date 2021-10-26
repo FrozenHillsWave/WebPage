@@ -21,25 +21,25 @@ p {
 #minimalize_window {
     transition-duration: 0.1s;
     position: relative;
-    background-color: gray;
-    width: 70px;
-    height: 45px;
-    left: 77.9%;}
+    background-color: grey;
+    width: 7.5%;
+    height: 100%;
+    left: 38.75vw;}
 #maximize_window {
     transition-duration: 0.1s;
     position: relative;
-    background-color: gray;
-    width: 70px;
-    height: 45px;
-    left: 85.25%;
+    background-color: grey;
+    width: 7.5%;
+    height: 100%;
+    left: 42.25vw;
     bottom: 136%;}
 #close_window {
     transition-duration: 0.1s;
     position: relative;
-    background-color: gray;
-    width: 70px;
-    height: 45px;
-    left: 92.6%;
+    background-color: grey;
+    width: 7.5%;
+    height: 100%;
+    left: 45.85vw;
     bottom: 271%;}
 :hover#maximize_window {
     transition-duration: 0.1s;
@@ -133,7 +133,7 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
     bottom: 390%;
-    left: 5%;
+    left: 3vw;
     width: 105px;
 }
 .commandprompt {
