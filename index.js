@@ -15,7 +15,7 @@ document.addEventListener("keydown", function () {
 });
 
 function commands() {
-    commandList = ["ping", "pong", "partnereink", "logonk", "unalom"]
+    commandList = ["ping", "pong", "partnereink", "logonk", "tagok"]
     var command = document.getElementById("commandprompt_input").value;
     switch (command) {
         case "help":
@@ -38,8 +38,8 @@ function commands() {
         case "logonk":
           window.open("logonk.html")
           break;
-        case "unalom":
-          window.open("unalom.html")
+        case "tagok":
+          window.open("tagok.html")
           break;
     
         default:

@@ -9,6 +9,8 @@ body {
 }
 
 h2 {
+    position: relative;
+    top: 35%;
     font-weight: bolder;
     font-family: 'Source Code Pro', monospace;
 }
