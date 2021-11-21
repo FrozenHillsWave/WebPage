@@ -11,42 +11,61 @@ function minimalize() {
 document.addEventListener("keydown", function () {
   if (event.keyCode == "13") {
     commands()
-  }
+  };
 });
 
+function ClearInput() {
+  setTimeout(() =>
+  document.getElementById("commandprompt_input").value = "",
+  500
+)};
 function commands() {
-    commandList = ["ping", "pong", "partnereink", "logonk", "tagok"]
+    commandList = ["ping", "pong", "partnereink", "logonk", "tagok", "python"]
     var command = document.getElementById("commandprompt_input").value;
     switch (command) {
+        case "?":
         case "help":
             document.getElementById("output").innerHTML = "Használható parancsok:<br> \
             -"+commandList[0]+"<br>\
             -"+commandList[1]+"<br>\
             -"+commandList[2]+"<br>\
             -"+commandList[3]+"<br>\
-            -"+commandList[4];
+            -"+commandList[4]+"<br>\
+            -"+commandList[5];
+
+            ClearInput();
             break;
         case "ping":
           document.getElementById("output").innerHTML = "PONG"
+          ClearInput();
           break;
         case "pong":
           document.getElementById("output").innerHTML = "PING"
+          ClearInput();
           break;
         case "partnereink":
-          window.open("partnereink.html")
+          window.open("./Weblapok/partnereink.html")
+          ClearInput();
           break;
         case "logonk":
-          window.open("logonk.html")
+          window.open("./Weblapok/logonk.html")
+          ClearInput();
           break;
         case "tagok":
-          window.open("tagok.html")
+          window.open("./Weblapok/tagok.html")
+          ClearInput();
+          break;
+        case "python":
+          window.open("./Weblapok/python.html")
+          ClearInput();
           break;
     
         default:
             document.getElementById("output").innerHTML = 'Error! Please enter valid command! To see what commands you can use type "help" in to the command line';
+            ClearInput();
             break;
-    }
-}
+    };
+};
 
 window.onload = function() {
   HexGenerator()
