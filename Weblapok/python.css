@@ -1,0 +1,103 @@
+.python-page-upper {
+    background-color: white;
+    height: 5%;}
+.python-page-lower {
+    height: 100%;
+    width: 100%;
+    background-color: black;}
+.python-page {
+    position: absolute;
+    top: 3%;
+    left: 12.5%;
+    height: 80%;
+    width: 75%;
+    filter: drop-shadow(0px 0px 20px black);}
+
+.python-logo {
+    -webkit-user-drag: none;
+    position: relative;
+    top: 5%;
+    left: 0.5%;
+    height: 90%;}
+.python-logo-title {
+    top: -1.5%;
+    left: 2.5vw;
+    font-size: 120%;
+    position: absolute;}
+
+.system-tray {
+    opacity: 70%;
+    z-index: 2;
+    position: sticky;
+    background-color: black;
+    height: 7.5%;
+    top: 100%;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    left: 1%;
+    color: white;
+}
+
+input {
+    width: 10%;
+    border: none;
+    background-image: none;
+    caret-color: transparent;
+    position: relative;
+    right: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 100%;
+    background-color: transparent;
+    color: white;}
+input:focus {
+    outline: none;}
+
+
+#minimalize_window {
+    transition-duration: 0.1s;
+    position: absolute;
+    background-color: white;
+    width: 5%;
+    height: 5%;
+    right: 10%;
+    top: 0%;}
+#maximize_window {
+    transition-duration: 0.1s;
+    position: absolute;
+    background-color: white;
+    width: 5%;
+    height: 5%;
+    right: 5%;
+    top: 0%;}
+#close_window {
+    transition-duration: 0.1s;
+    position: absolute;
+    background-color: white;
+    width: 5%;
+    height: 5%;
+    right: 0%;
+    top: 0%;}
+:hover#maximize_window {
+    transition-duration: 0.1s;
+    background-color: lightgray;}
+:hover#minimalize_window {
+    transition-duration: 0.1s;
+    background-color: lightgray;}
+:hover#close_window {
+    transition-duration: 0.1s;
+    background-color: red;
+    color: white;}
+.function_window_text {
+    color: black;
+    cursor: default;
+    position: relative;
+    text-align: center;
+    width: 15px;
+    height: 10px;
+    top: -15%;
+    left: 40%;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 1000;}
