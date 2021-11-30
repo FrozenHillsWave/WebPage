@@ -1,15 +1,16 @@
+numberOfApps = 20;
+CurrentAppIconWidthList =  []
+
+
 function PYthonTitle() {
     document.getElementById("python-source").innerHTML = "C:/Doors/py.exe"
     document.getElementById("python-source").style.fontFamily = "Source Code Pro, monospace"
     document.getElementById("python-source").style.fontWeight = "900"
     document.getElementById("python-source").style.color = "black"
-};
-numberOfApps = 20;
-CurrentAppIconWidthList =  []
-    
+}; 
 function AppIconCreation() {
     CurrentAppIconWidth = 0
-    űist = []
+    list = []
 
     for (let index = 0; index < numberOfApps; index++) {
         
@@ -24,7 +25,7 @@ function AppIconCreation() {
         number = index + 1;
         newID = document.createAttribute("id", "appIconHolder" + number);
         enemyHitbox.setAttribute("id", "appIconHolder" + number);
-        űist.push(enemyHitbox)
+        list.push(enemyHitbox)
         //console.log(űist)
         /*
         window.addEventListener('resize', function(){
@@ -62,11 +63,90 @@ function AppIconCreation() {
         document.getElementById("appIconHolder" + number).style.border = "1px solid black"
         };
         enemySkin = document.createElement("img");
-        űist[0].appendChild(enemySkin);
+        list[0].appendChild(enemySkin);
         enemySkin.src = "../Képek/DOORS.png";
         enemySkin.style.width = "100%";
         enemySkin.style.height = "100%";
         enemySkin.style.filter = "grayscale(100%)"
+};
+
+function CampfireBase() {
+    campFireHolder = document.createElement("div");
+    document.querySelector('body').appendChild(campFireHolder);
+    document.createAttribute("id", "CampFireHolder");
+    campFireHolder.setAttribute("id", "CampFireHolder");
+    CampHolderSize = window.innerHeight / 2;
+    campFireHolder.style.width = CampHolderSize;
+    campFireHolder.style.height = CampHolderSize;
+    campFireHolder.style.position = "relative"
+    campFireHolder.style.top = CampHolderSize/2;
+    campFireHolder.style.border = "10px solid red";
+    campFireHolder.style.zIndex = 999;
+    
+    for (let index = 0; index < 2; index++) {
+        campFireWood = document.createElement("div");
+        document.querySelector('#CampFireHolder').appendChild(campFireWood);
+        document.createAttribute("id", "CampFire" + index);
+        campFireWood.setAttribute("id", "CampFire" + index);
+        campFireWood.style.marginLeft = CampHolderSize/4;
+        campFireWood.style.width = CampHolderSize/2;
+        campFireWood.style.height = CampHolderSize/8;
+        campFireWood.style.position = "absolute";
+        campFireWood.style.top = CampHolderSize - CampHolderSize/6;
+        if (index == 1) {
+            campFireWood.style.transform = "rotate(350deg)";
+            campFireWood.style.top += 10;
+        } else {
+            campFireWood.style.transform = "rotate(190deg)";
+            campFireWood.style.filter = "brightness(90%)";
+        };
+        campFireWood.style.borderRadius = "10px";
+        campFireWood.style.backgroundColor = "brown";
+
+        campFireWoodFront = document.createElement("div");
+        document.querySelector('#CampFire' + index).appendChild(campFireWoodFront);
+        campFireWoodFront.style.width = campFireWood.offsetWidth/4;
+        campFireWoodFront.style.height = campFireWood.offsetHeight;
+        campFireWoodFront.style.marginLeft = campFireWood.offsetWidth - campFireWood.offsetWidth/4;
+        campFireWoodFront.style.borderRadius = "10px";
+        campFireWoodFront.style.backgroundColor = "#654321";  
+    };
+};
+function CampfireBlaze() {
+    var id = null;
+    blazePixel = document.createElement("div");
+    document.querySelector('#CampFireHolder').appendChild(blazePixel);
+    document.createAttribute("id", "BlazePixel");
+    blazePixel.setAttribute("id", "BlazePixel");
+    blazePixel.style.display = "block"
+    blazePixel.style.backgroundColor = "red";
+
+
+    pos = campFireHolder.offsetHeight - blazePixel.offsetHeight;
+    size = campFireHolder.offsetHeight / 16;
+    clearInterval(id);
+    id = setInterval(frame, 500);
+    function frame() {
+        if (pos == campFireHolder.offsetHeight / 5) {
+        blazePixel.style.display = "none"
+        clearInterval(id);
+        } else {
+        size -= size / 75;
+        pos--;
+        blazePixel.style.height = size + "px";
+        blazePixel.style.width = size + "px";
+        blazePixel.style.top = pos + 'px';
+        };
+    };
+    setTimeout(() => {
+        
+    }, 1000);
+};
+function Campfire() {
+    CampfireBase();
+    setInterval(() => {
+        CampfireBlaze();
+    }, 2000);
 };
 
 
@@ -125,12 +205,14 @@ function QuizFirstQuestionPositive() {
     document.createAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
     AnswerInput2.setAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
     document.querySelector('#SecondQuestion' + SecondQuestionCounter).appendChild(AnswerInput2);
+    AnswerInput2.setAttribute("maxlength", 1);
     
     AnswerInputItem = document.getElementById("AnswerInput" + FirstQuestionCounter)
     ReplaceingUsedInputs('#FirstQuestion' + FirstQuestionCounter, AnswerInputItem.value, AnswerInputItem)
 
     SecondQuestionCounter += 1;
 };
+
 
 function QuizSecondQuestionError() {
     BasicError('"1"', '"2"');
@@ -145,24 +227,47 @@ function QuizSecondQuestionError() {
     document.createAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
     AnswerInput2.setAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
     document.querySelector('#SecondQuestion' + SecondQuestionCounter).appendChild(AnswerInput2);
+    AnswerInput2.setAttribute("maxlength", 1);
     
     AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
     ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
 
-    console.log('#SecondQuestion' + SecondQuestionCounter)
-
     SecondQuestionCounter += 1;
 };
-function QuizSecondQuestionNegative() {
+function QuizWritingBegin() {
     
 };
-function QuizSecondQuestionPositive() {
+function QuizTestBegin() {
+    difficultyWarning = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(difficultyWarning);
+    document.createAttribute("id", "DifficultyWarning");
+    difficultyWarning.setAttribute("id", "DifficultyWarning");
+    difficultyWarning.innerHTML = 'Figyelmeztetés! <br>  A helyes válaszokat 0-4-ig lehet választani, a 0 arra utal ha nincs helyes válasz! <br> 1) Nagyon Könnyű (10) <br> 2) Könnyű (20) <br> 3) Közepes (30) <br> 4) Nehéz (50) <br> 5) Ultra Nehéz (100) <br> 6) Halál mod (200) <br> 7) Egyéb <br> Válasz: ';
     
+    difficultyInput = document.createElement("input");
+    document.createAttribute("id", "DifficultyInput");
+    document.querySelector('#DifficultyWarning').appendChild(difficultyInput);
+    difficultyInput.setAttribute("id", "DifficultyInput");
+    difficultyInput.setAttribute("maxlength", 1);
+    
+    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
+    ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
 };
+
+
+function FullPythonAppWarning() {
+    //Refusal message
+};
+function ActualQuiz() {
+    //Paragraph kérdéssel for loopban
+    //4 kérdés for looppal
+};
+
 
 window.onload = function() {
     PYthonTitle();
     AppIconCreation();
+    Campfire();
 };
 
 document.addEventListener("keydown", function () {
@@ -197,10 +302,32 @@ function Second() {
                 case 2:
                 case "2":
                     QuizTestBegin();
+                    Difficulty()
                     break;
                 default:
                     QuizSecondQuestionError();
-                    console.log(SecondQuestion)
+                    break;
+            };
+        };
+    });
+};
+function Difficulty() {
+    document.addEventListener("keydown", function () {
+        if (event.keyCode == "13") { 
+            DifficultyChoosing = document.getElementById("DifficultyInput").value;
+            switch (DifficultyChoosing) {
+                case 1:
+                case "1":
+                    ActualQuiz()
+                    //1st option
+                    break;
+                case 7:
+                case "7":
+                    //custom option
+                    alert("Egyéb")
+                    break;
+                default:
+                    FullPythonAppWarning();
                     break;
             };
         };
