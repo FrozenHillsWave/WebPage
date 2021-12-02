@@ -1,4 +1,4 @@
-numberOfApps = 20;
+numberOfApps = 10;
 CurrentAppIconWidthList =  []
 
 
@@ -13,19 +13,13 @@ function AppIconCreation() {
     list = []
 
     for (let index = 0; index < numberOfApps; index++) {
-        
-
-        enemyHitbox = document.createElement("div");
-        document.querySelector('section').appendChild(enemyHitbox);
-
-        
-
-
+        AppIconHolder = document.createElement("div");
+        document.querySelector('section').appendChild(AppIconHolder);
         
         number = index + 1;
         newID = document.createAttribute("id", "appIconHolder" + number);
-        enemyHitbox.setAttribute("id", "appIconHolder" + number);
-        list.push(enemyHitbox)
+        AppIconHolder.setAttribute("id", "appIconHolder" + number);
+        list.push(AppIconHolder)
         //console.log(űist)
         /*
         window.addEventListener('resize', function(){
@@ -59,15 +53,9 @@ function AppIconCreation() {
         document.getElementById("appIconHolder" + number).style.height = "100%";
         document.getElementById("appIconHolder" + number).style.position = "absolute";
         document.getElementById("appIconHolder" + number).style.zIndex = "996";
-        document.getElementById("appIconHolder" + number).style.backgroundColor = "red";
+        document.getElementById("appIconHolder" + number).style.backgroundColor = "grey";
         document.getElementById("appIconHolder" + number).style.border = "1px solid black"
         };
-        enemySkin = document.createElement("img");
-        list[0].appendChild(enemySkin);
-        enemySkin.src = "../Képek/DOORS.png";
-        enemySkin.style.width = "100%";
-        enemySkin.style.height = "100%";
-        enemySkin.style.filter = "grayscale(100%)"
 };
 
 function CampfireBase() {
@@ -75,13 +63,14 @@ function CampfireBase() {
     document.querySelector('body').appendChild(campFireHolder);
     document.createAttribute("id", "CampFireHolder");
     campFireHolder.setAttribute("id", "CampFireHolder");
-    CampHolderSize = window.innerHeight / 2;
+    CampHolderSize = window.innerHeight/2;
     campFireHolder.style.width = CampHolderSize;
     campFireHolder.style.height = CampHolderSize;
     campFireHolder.style.position = "relative"
-    campFireHolder.style.top = CampHolderSize/2;
-    campFireHolder.style.border = "10px solid red";
-    campFireHolder.style.zIndex = 999;
+    campFireHolder.style.top = CampHolderSize/1.75;
+    //campFireHolder.style.border = "10px solid red";
+    campFireHolder.style.left = "77.5%";
+    campFireHolder.style.zIndex = 100;
     
     for (let index = 0; index < 2; index++) {
         campFireWood = document.createElement("div");
@@ -93,6 +82,7 @@ function CampfireBase() {
         campFireWood.style.height = CampHolderSize/8;
         campFireWood.style.position = "absolute";
         campFireWood.style.top = CampHolderSize - CampHolderSize/6;
+        campFireWood.style.zIndex = 101;
         if (index == 1) {
             campFireWood.style.transform = "rotate(350deg)";
             campFireWood.style.top += 10;
@@ -109,44 +99,71 @@ function CampfireBase() {
         campFireWoodFront.style.height = campFireWood.offsetHeight;
         campFireWoodFront.style.marginLeft = campFireWood.offsetWidth - campFireWood.offsetWidth/4;
         campFireWoodFront.style.borderRadius = "10px";
-        campFireWoodFront.style.backgroundColor = "#654321";  
+        campFireWoodFront.style.backgroundColor = "#654321";
+        campFireWoodFront.style.zIndex = 102; 
     };
+
+    campFireImg = document.createElement("img");
+    document.querySelector('#CampFireHolder').appendChild(campFireImg);
+    document.createAttribute("id", "CampFireImg");
+    campFireImg.setAttribute("id", "CampFireImg");
+    campFireImg.style.width = CampHolderSize / 2;
+    campFireImg.src = "https://lh3.googleusercontent.com/proxy/PqvpXLQ_itZiAq4Vb44TasnCc1MvPuyn0ME2F5hdmja4JNKXTyPnfT-Jhm6hI0MUoKQcWk755DINxAxU0G91fsyzZpUyxi8";
+    campFireImg.style.height = CampHolderSize / 2;
+    campFireImg.style.position = "absolute"
+    campFireImg.style.left = CampHolderSize / 4;
+    campFireImg.style.top = CampHolderSize/2.25;
+    campFireImg.style.zIndex = 103;
 };
 function CampfireBlaze() {
+    var size = campFireHolder.offsetHeight / 16;
     var id = null;
+    var blazeStart = Math.random() * (4 - 1.5) + 1.5;
+    var shrink = Math.random() * (200 - 100) + 100;
+    var speed = Math.random() * (3 - 1) + 1;
+    var Colors = ["#E40230", "#E4101C", "#EA5B0C"]
+    var Position = campFireHolder.offsetHeight - 2*(CampHolderSize/8);
+    var KillHeight = Math.random() * (100 - 1) + 1;
+
     blazePixel = document.createElement("div");
     document.querySelector('#CampFireHolder').appendChild(blazePixel);
     document.createAttribute("id", "BlazePixel");
     blazePixel.setAttribute("id", "BlazePixel");
-    blazePixel.style.display = "block"
-    blazePixel.style.backgroundColor = "red";
+    blazePixel.style.backgroundColor = Colors[parseInt(speed)];
+    blazePixel.style.marginLeft = campFireHolder.offsetWidth / blazeStart;
+    blazePixel.style.position = "absolute";
+    blazePixel.style.zIndex = 99;
 
-
-    pos = campFireHolder.offsetHeight - blazePixel.offsetHeight;
-    size = campFireHolder.offsetHeight / 16;
     clearInterval(id);
-    id = setInterval(frame, 500);
+    id = setInterval(frame, 10);
     function frame() {
-        if (pos == campFireHolder.offsetHeight / 5) {
-        blazePixel.style.display = "none"
-        clearInterval(id);
+        if (Position < KillHeight) {
+            clearInterval(id);
+            this.blazePixel.remove();
         } else {
-        size -= size / 75;
-        pos--;
-        blazePixel.style.height = size + "px";
-        blazePixel.style.width = size + "px";
-        blazePixel.style.top = pos + 'px';
+            shrank = Math.random() * (200 - 100) + 100;
+            size -= size / shrink;
+            Position -= speed;
+            if (shrank < 100) {
+                blazeStart += 1;
+            } else {
+                blazeStart -= 1;
+            }
+            //console.log(size)
+            //console.log(Position)
+            blazePixel.style.height = size + "px";
+            blazePixel.style.width = size + "px";
+            blazePixel.style.left = blazeStart + "px";
+            
+            blazePixel.style.top = Position + 'px'
         };
     };
-    setTimeout(() => {
-        
-    }, 1000);
 };
 function Campfire() {
     CampfireBase();
     setInterval(() => {
         CampfireBlaze();
-    }, 2000);
+    }, 5000);
 };
 
 
