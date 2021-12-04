@@ -108,14 +108,16 @@ function CampfireBase() {
     document.createAttribute("id", "CampFireImg");
     campFireImg.setAttribute("id", "CampFireImg");
     campFireImg.style.width = CampHolderSize / 2;
-    campFireImg.src = "https://lh3.googleusercontent.com/proxy/PqvpXLQ_itZiAq4Vb44TasnCc1MvPuyn0ME2F5hdmja4JNKXTyPnfT-Jhm6hI0MUoKQcWk755DINxAxU0G91fsyzZpUyxi8";
+    campFireImg.src = "../Képek/Blaze.png";
     campFireImg.style.height = CampHolderSize / 2;
     campFireImg.style.position = "absolute"
     campFireImg.style.left = CampHolderSize / 4;
     campFireImg.style.top = CampHolderSize/2.25;
     campFireImg.style.zIndex = 103;
 };
+done = true;
 function CampfireBlaze() {
+    done = false;
     var size = campFireHolder.offsetHeight / 16;
     var id = null;
     var blazeStart = Math.random() * (4 - 1.5) + 1.5;
@@ -129,7 +131,7 @@ function CampfireBlaze() {
     document.querySelector('#CampFireHolder').appendChild(blazePixel);
     document.createAttribute("id", "BlazePixel");
     blazePixel.setAttribute("id", "BlazePixel");
-    blazePixel.style.backgroundColor = Colors[parseInt(speed)];
+    blazePixel.style.backgroundColor = Colors[parseInt(Math.random() * (Colors.length - 1) + 1)];
     blazePixel.style.marginLeft = campFireHolder.offsetWidth / blazeStart;
     blazePixel.style.position = "absolute";
     blazePixel.style.zIndex = 99;
@@ -140,14 +142,14 @@ function CampfireBlaze() {
         if (Position < KillHeight) {
             clearInterval(id);
             this.blazePixel.remove();
-        } else {
-            shrank = Math.random() * (200 - 100) + 100;
+            done = true;
+        } else { 
             size -= size / shrink;
             Position -= speed;
-            if (shrank < 100) {
-                blazeStart += 1;
+            if (shrink < 100) {
+                blazeStart += 0.5;
             } else {
-                blazeStart -= 1;
+                blazeStart -= 0.5;
             }
             //console.log(size)
             //console.log(Position)
@@ -162,8 +164,10 @@ function CampfireBlaze() {
 function Campfire() {
     CampfireBase();
     setInterval(() => {
-        CampfireBlaze();
-    }, 5000);
+        if (done == true) {
+            CampfireBlaze();
+        };
+    }, 10);
 };
 
 
@@ -255,11 +259,12 @@ function QuizWritingBegin() {
     
 };
 function QuizTestBegin() {
+    difficultyList = ["Nagyon Könnyű (10)", "Könnyű (20) 🔒", "Közepes (30) 🔒", "Nehéz (50) 🔒", "Ultra Nehéz (100) 🔒" , "Halál mod (200) 🔒", "Egyéb 🔒"];
     difficultyWarning = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(difficultyWarning);
     document.createAttribute("id", "DifficultyWarning");
     difficultyWarning.setAttribute("id", "DifficultyWarning");
-    difficultyWarning.innerHTML = 'Figyelmeztetés! <br>  A helyes válaszokat 0-4-ig lehet választani, a 0 arra utal ha nincs helyes válasz! <br> 1) Nagyon Könnyű (10) <br> 2) Könnyű (20) <br> 3) Közepes (30) <br> 4) Nehéz (50) <br> 5) Ultra Nehéz (100) <br> 6) Halál mod (200) <br> 7) Egyéb <br> Válasz: ';
+    difficultyWarning.innerHTML = 'Figyelmeztetés! <br>  A helyes válaszokat 0-4-ig lehet választani, a 0 arra utal ha nincs helyes válasz! <br> 1)  <br> Válasz: ';
     
     difficultyInput = document.createElement("input");
     document.createAttribute("id", "DifficultyInput");
