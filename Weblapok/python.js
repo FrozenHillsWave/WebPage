@@ -1,13 +1,35 @@
-numberOfApps = 10;
-CurrentAppIconWidthList =  []
+var numberOfApps = 10;
+var CurrentAppIconWidthList =  []
 
+function CustomBackgroundGeneration() {
+    background = document.createElement("img");
+    document.querySelector('body').appendChild(background);
+    background.src = "../Képek/PythonBackgroundBase.jpg";
+    background.style.position = "absolute";
+    background.style.filter = "brightness(60%)";
+    setInterval(() => {
+        background.style.height = window.innerHeight;
+        background.style.width = window.innerWidth;
+        background.style.left = 0;
+        background.style.top = 0;
+    }, 100);
 
-function PYthonTitle() {
-    document.getElementById("python-source").innerHTML = "C:/Doors/py.exe"
-    document.getElementById("python-source").style.fontFamily = "Source Code Pro, monospace"
-    document.getElementById("python-source").style.fontWeight = "900"
-    document.getElementById("python-source").style.color = "black"
-}; 
+    //Készitünk egy neon keretet
+    neonframe = document.createElement("div");
+    document.querySelector("body").appendChild(neonframe);
+    neonframe.style.position = "absolute";
+    setInterval(() => {
+        var FreeSpace = window.innerWidth - neonframe.offsetWidth;
+        var TopMargin = window.innerHeight - neonframe.offsetHeight;
+        neonframe.style.left = parseInt(FreeSpace/2);
+        neonframe.style.top = parseInt(TopMargin/2);
+        neonframe.style.height = window.innerHeight / 1.15;
+        neonframe.style.width = window.innerWidth / 1.05;
+        neonframe.style.border = "10px solid #1167b1";
+        neonframe.style.filter = "drop-shadow(0 0 15px #59bfff) contrast(200%)";
+    }, 99);
+};
+ 
 function AppIconCreation() {
     CurrentAppIconWidth = 0
     list = []
@@ -67,9 +89,9 @@ function CampfireBase() {
     campFireHolder.style.width = CampHolderSize;
     campFireHolder.style.height = CampHolderSize;
     campFireHolder.style.position = "relative"
-    campFireHolder.style.top = CampHolderSize/1.75;
-    //campFireHolder.style.border = "10px solid red";
-    campFireHolder.style.left = "77.5%";
+    campFireHolder.style.top = window.innerHeight/3;
+    //campFireHolder.style.border = "1px solid red";
+    campFireHolder.style.left = window.innerWidth - campFireHolder.offsetWidth;
     campFireHolder.style.zIndex = 100;
     
     for (let index = 0; index < 2; index++) {
@@ -77,7 +99,8 @@ function CampfireBase() {
         document.querySelector('#CampFireHolder').appendChild(campFireWood);
         document.createAttribute("id", "CampFire" + index);
         campFireWood.setAttribute("id", "CampFire" + index);
-        campFireWood.style.marginLeft = CampHolderSize/4;
+        CampFireMiddle = CampHolderSize - campFireWood.offsetWidth/Math.sqrt(2)
+        campFireWood.style.left = CampFireMiddle;
         campFireWood.style.width = CampHolderSize/2;
         campFireWood.style.height = CampHolderSize/8;
         campFireWood.style.position = "absolute";
@@ -88,7 +111,7 @@ function CampfireBase() {
             campFireWood.style.top += 10;
         } else {
             campFireWood.style.transform = "rotate(190deg)";
-            campFireWood.style.filter = "brightness(90%)";
+            campFireWood.style.filter = "brightness(80%)";
         };
         campFireWood.style.borderRadius = "10px";
         campFireWood.style.backgroundColor = "brown";
@@ -111,7 +134,7 @@ function CampfireBase() {
     campFireImg.src = "../Képek/Blaze.png";
     campFireImg.style.height = CampHolderSize / 2;
     campFireImg.style.position = "absolute"
-    campFireImg.style.left = CampHolderSize / 4;
+    campFireImg.style.left = CampFireMiddle;
     campFireImg.style.top = CampHolderSize/2.25;
     campFireImg.style.zIndex = 103;
 };
@@ -184,8 +207,8 @@ function ReplaceingUsedInputs(replaceHolder, replaceText, replaceItem) {
 };
 
 
-FirstQuestionCounter = 1
-SecondQuestionCounter = 1
+var FirstQuestionCounter = 1
+var SecondQuestionCounter = 1
 
 function QuizFirstQuestionError() {
     BasicError('"Igen"', '"Nem"');
@@ -259,12 +282,11 @@ function QuizWritingBegin() {
     
 };
 function QuizTestBegin() {
-    difficultyList = ["Nagyon Könnyű (10)", "Könnyű (20) 🔒", "Közepes (30) 🔒", "Nehéz (50) 🔒", "Ultra Nehéz (100) 🔒" , "Halál mod (200) 🔒", "Egyéb 🔒"];
     difficultyWarning = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(difficultyWarning);
     document.createAttribute("id", "DifficultyWarning");
     difficultyWarning.setAttribute("id", "DifficultyWarning");
-    difficultyWarning.innerHTML = 'Figyelmeztetés! <br>  A helyes válaszokat 0-4-ig lehet választani, a 0 arra utal ha nincs helyes válasz! <br> 1)  <br> Válasz: ';
+    difficultyWarning.innerHTML = 'Figyelmeztetés! <br>  A helyes válaszokat 0-4-ig lehet választani, a 0 arra utal ha nincs helyes válasz! <br> 1) Nagyon Könnyű (10) <br> 2) Könnyű (20) 🔒 <br> 3) Közepes (30) 🔒 <br> 4) Nehéz (50) 🔒 <br> 5) Ultra Nehéz (100) 🔒 <br> 6) Halál mod (200) 🔒 <br> 7) Egyéb 🔒  <br> Válasz: ';
     
     difficultyInput = document.createElement("input");
     document.createAttribute("id", "DifficultyInput");
@@ -272,22 +294,72 @@ function QuizTestBegin() {
     difficultyInput.setAttribute("id", "DifficultyInput");
     difficultyInput.setAttribute("maxlength", 1);
     
-    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
+    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter);
     ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
 };
 
-
+var FullPythonCounter = 1;
+var FullVersionQuestionCounter = 1;
 function FullPythonAppWarning() {
-    //Refusal message
-};
-function ActualQuiz() {
-    //Paragraph kérdéssel for loopban
-    //4 kérdés for looppal
-};
+    if (FullPythonCounter == 1) {
+        AnswerInputItem = document.getElementById("DifficultyInput");
+        ReplaceingUsedInputs('#DifficultyWarning', AnswerInputItem.value, AnswerInputItem)
+        FullPythonCounter++;
+    } else {
+        AnswerInputItem = document.getElementById("DifficultyInput");
+        ReplaceingUsedInputs('#FullVersionQuestion' + (FullVersionQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
+    };
+    
+    FullVersion = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(FullVersion);
+    FullVersion.innerHTML = "A többi mód eléréséért tölstsd le a python applickációnkat!"
 
+    difficultyAnswer = document.createElement("p");
+    document.createAttribute("id", "FullVersionQuestion" + FullVersionQuestionCounter);
+    difficultyAnswer.setAttribute("id", "FullVersionQuestion" + FullVersionQuestionCounter);
+    document.querySelector('.python-page-lower').appendChild(difficultyAnswer);
+    difficultyAnswer.innerHTML = "Válasz: ";
+
+    difficultyInput = document.createElement("input");
+    document.createAttribute("id", "DifficultyInput");
+    document.querySelector('#FullVersionQuestion' + FullVersionQuestionCounter).appendChild(difficultyInput);
+    difficultyInput.setAttribute("id", "DifficultyInput");
+    difficultyInput.setAttribute("maxlength", 1);  
+
+    FullVersionQuestionCounter++;
+};
+var numberOfAnswers = 4;
+function ActualQuiz() {
+    AnswerInputItem = document.getElementById("DifficultyInput");
+    ReplaceingUsedInputs('#FullVersionQuestion' + (FullVersionQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem);
+
+    Questions = ["Kinek van a legtöbb aranylabdája?", "Ronaldo melyik csapatban játszik?", "Ki a francia rekord bajnok?", "Ki nyert legtöbbször világbajnokságot?", "Ki nyert legtöbbször labdarúgó olimpiát?", "Ki nyerte meg legtöbbször a Bajnokok ligáját?", "Melyik játékos értéke volt a legtöbb amiért eladók?", "Ki bem magyar válogatott?", "Mennyi az összértéke kb a magyar válogatottnak?", "Ki a legtöbbszörös válogatott?"]
+    Answers = []
+
+    for (var letz = 1; letz < numberOfApps +1; letz++) {
+        quizQuestion = document.createElement("p");
+        document.querySelector('.python-page-lower').appendChild(quizQuestion);
+        document.createAttribute("id", "Question" +letz);
+        quizQuestion.setAttribute("id", "Question" + letz);
+        quizQuestion.innerHTML = Questions[letz-1];
+
+        for (let index = 0; index < numberOfAnswers; index++) {
+            quizAnswer = document.createElement("p");
+            document.querySelector("#Question" + letz).appendChild(quizAnswer);
+            document.createAttribute("id", "Answer" + (index + 1));
+            quizAnswer.setAttribute("id", "Answer" + (index + 1));
+        };
+
+        quizAnswerInput = document.createElement("input");
+        document.createAttribute("id", "QuizAnswerInput");
+        quizAnswerInput.setAttribute("id", "QuizAnswerInput");
+        document.querySelector("#Question" + letz).appendChild(quizAnswerInput);
+        quizAnswerInput.setAttribute("maxlength", 1);
+    };
+};
 
 window.onload = function() {
-    PYthonTitle();
+    CustomBackgroundGeneration();
     AppIconCreation();
     Campfire();
 };
@@ -341,12 +413,6 @@ function Difficulty() {
                 case 1:
                 case "1":
                     ActualQuiz()
-                    //1st option
-                    break;
-                case 7:
-                case "7":
-                    //custom option
-                    alert("Egyéb")
                     break;
                 default:
                     FullPythonAppWarning();
