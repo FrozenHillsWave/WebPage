@@ -1,12 +1,12 @@
 var numberOfApps = 10;
-var CurrentAppIconWidthList =  []
+var CurrentAppIconWidthList =  [];
 
 function CustomBackgroundGeneration() {
     background = document.createElement("img");
     document.querySelector('body').appendChild(background);
     background.src = "../Képek/PythonBackgroundBase.jpg";
     background.style.position = "absolute";
-    background.style.filter = "brightness(60%)";
+    background.style.filter = "brightness(40%)";
     setInterval(() => {
         background.style.height = window.innerHeight;
         background.style.width = window.innerWidth;
@@ -329,33 +329,72 @@ function FullPythonAppWarning() {
     FullVersionQuestionCounter++;
 };
 var numberOfAnswers = 4;
+var Running = true;
+var Runned = 1;
+var AnswerCounter = 0;
 function ActualQuiz() {
-    AnswerInputItem = document.getElementById("DifficultyInput");
-    ReplaceingUsedInputs('#FullVersionQuestion' + (FullVersionQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem);
-
-    Questions = ["Kinek van a legtöbb aranylabdája?", "Ronaldo melyik csapatban játszik?", "Ki a francia rekord bajnok?", "Ki nyert legtöbbször világbajnokságot?", "Ki nyert legtöbbször labdarúgó olimpiát?", "Ki nyerte meg legtöbbször a Bajnokok ligáját?", "Melyik játékos értéke volt a legtöbb amiért eladók?", "Ki bem magyar válogatott?", "Mennyi az összértéke kb a magyar válogatottnak?", "Ki a legtöbbszörös válogatott?"]
-    Answers = []
-
-    for (var letz = 1; letz < numberOfApps +1; letz++) {
-        quizQuestion = document.createElement("p");
-        document.querySelector('.python-page-lower').appendChild(quizQuestion);
-        document.createAttribute("id", "Question" +letz);
-        quizQuestion.setAttribute("id", "Question" + letz);
-        quizQuestion.innerHTML = Questions[letz-1];
-
-        for (let index = 0; index < numberOfAnswers; index++) {
-            quizAnswer = document.createElement("p");
-            document.querySelector("#Question" + letz).appendChild(quizAnswer);
-            document.createAttribute("id", "Answer" + (index + 1));
-            quizAnswer.setAttribute("id", "Answer" + (index + 1));
+    try {
+        if (FullPythonCounter == 1) {
+            AnswerInputItem = document.getElementById("DifficultyInput");
+            ReplaceingUsedInputs('#DifficultyWarning', AnswerInputItem.value, AnswerInputItem)
+            FullPythonCounter++;
+        } else {
+            AnswerInputItem = document.getElementById("DifficultyInput");
+            ReplaceingUsedInputs('#FullVersionQuestion' + (FullVersionQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
         };
-
-        quizAnswerInput = document.createElement("input");
-        document.createAttribute("id", "QuizAnswerInput");
-        quizAnswerInput.setAttribute("id", "QuizAnswerInput");
-        document.querySelector("#Question" + letz).appendChild(quizAnswerInput);
-        quizAnswerInput.setAttribute("maxlength", 1);
+    } catch (error) {
+        
     };
+
+
+    Running = false
+
+    Questions = ["Kinek van a legtöbb aranylabdája?", "Ronaldo melyik csapatban játszik?", "Ki a francia rekord bajnok?", "Ki nyert legtöbbször világbajnokságot?", "Ki nyert legtöbbször labdarúgó olimpiát?", "Ki nyerte meg legtöbbször a Bajnokok ligáját?", "Melyik játékos értéke volt a legtöbb amiért eladók?", "Ki nem magyar válogatott?", "Mennyi az összértéke kb a magyar válogatottnak?", "Ki a legtöbbszörös válogatott?"]
+    Answers = [
+                "L.Messi@*", "C.Ronaldo", "R.Lewandowski", "Neymar",
+                "Real Madrid", "Juventus", "Manchester United@*", "Manchester City",    
+                "Paris Saint German", "Olympique de Marseille", "As Monaco fc", "As Saint-Étienne@*",     
+                "Brazília@*", "Argentína", "Magyarország", "Anglia",
+                "Brazília", "Argentína", "Magyarország@*", "Anglia",
+                "Barcelona", "AC Milan", "PSG", "Real Madrid@*",
+                "Neymar@*", "Mbappe", "Ronaldo", "Messi",
+                "Dibusz Dénes", "Willi Orbán", "Loic Nego", "Dzsudzsák Balázs@*",
+                "70M Euró", "100M Euró@*", "50M Euró", "110M Euró",
+                "Dzsudzsák Balázs", "Puskás Ferenc", "Király Gábor@*", "Hidegkuti Nándor"
+            ];
+
+    quizQuestion = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(quizQuestion);
+    document.createAttribute("id", "Question" + Runned);
+    quizQuestion.setAttribute("id", "Question" + Runned);
+    quizQuestion.innerHTML = Questions[Runned-1]
+
+    
+    for (let index = 0; index < numberOfAnswers; index++) {
+        quizAnswer = document.createElement("p");
+        document.querySelector("#Question" + Runned).appendChild(quizAnswer);
+        document.createAttribute("id", "Answer" + (index + 1));
+        quizAnswer.setAttribute("id", "Answer" + (index + 1));
+        console.log(Answers[AnswerCounter].split("@", 2).length)
+        quizAnswer.innerHTML = Answers[AnswerCounter].split("@", 1);
+        AnswerCounter++;
+    };
+
+    quizAnswerInput = document.createElement("input");
+    document.createAttribute("id", "QuizAnswerInput" + Runned);
+    quizAnswerInput.setAttribute("id", "QuizAnswerInput" + Runned);
+    document.querySelector("#Question" + Runned).appendChild(quizAnswerInput);
+    quizAnswerInput.setAttribute("maxlength", 1);
+
+    Runned++;
+};
+
+
+var Finished = false;
+var correctAnswerCounter = 0;
+function Finish() {
+    Finished = false;
+    console.log("Finished", correctAnswerCounter + "/" + numberOfApps)
 };
 
 window.onload = function() {
@@ -396,7 +435,7 @@ function Second() {
                 case 2:
                 case "2":
                     QuizTestBegin();
-                    Difficulty()
+                    Difficulty();
                     break;
                 default:
                     QuizSecondQuestionError();
@@ -405,17 +444,75 @@ function Second() {
         };
     });
 };
+
 function Difficulty() {
     document.addEventListener("keydown", function () {
         if (event.keyCode == "13") { 
             DifficultyChoosing = document.getElementById("DifficultyInput").value;
             switch (DifficultyChoosing) {
-                case 1:
                 case "1":
-                    ActualQuiz()
+                    setInterval(() => {
+                        if (Running == true && Runned <= 10) {
+                            ActualQuiz();
+                            AnswerChecking();
+                        } else if (Runned == 11) {
+                            Runned++;
+                            Finished = true;
+                        } else if (Finished == true) {
+                            Finish();
+                        };
+                    }, 500);
                     break;
                 default:
                     FullPythonAppWarning();
+                    break;
+            };
+        };
+    });
+};
+
+function AnswerChecking() {
+    document.addEventListener("keydown", function () {
+        Answer = document.getElementById("QuizAnswerInput" + (Runned - 1)).value;
+        if (event.keyCode == "13" && Answer.length != 0) {
+            AnswerInputItem = document.getElementById("QuizAnswerInput" + (Runned - 1));
+            ReplaceingUsedInputs("#Question" + (Runned - 1), AnswerInputItem.value, AnswerInputItem)
+            switch (Answer) {
+                case "1":
+                    Running = true;
+                    if (Answers[AnswerCounter-4].split("@", 2).length == 2) {
+                        correctAnswerCounter++;
+                    } else {
+                        console.log("Wrong Answer")
+                    };
+                    break;
+                case "2":
+                    Running = true;
+                    if (Answers[AnswerCounter-3].split("@", 2).length == 2) {
+                        correctAnswerCounter++;
+                    } else {
+                        console.log("Wrong Answer")
+                    };
+                    break;
+                case "3":
+                    Running = true;
+                    if (Answers[AnswerCounter-2].split("@", 2).length == 2) {
+                        correctAnswerCounter++;
+                    } else {
+                        console.log("Wrong Answer")
+                    };
+                    break;
+                case "4":
+                    Running = true;
+                    if (Answers[AnswerCounter-1].split("@", 2).length == 2) {
+                        correctAnswerCounter++;
+                    } else {
+                        console.log("Wrong Answer")
+                    };
+                    break;
+                default:
+                    Running = false
+                    //Throwing back the "Asnwer" question and warning
                     break;
             };
         };
