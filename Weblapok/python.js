@@ -279,7 +279,26 @@ function QuizSecondQuestionError() {
     SecondQuestionCounter += 1;
 };
 function QuizWritingBegin() {
+    FullVersion = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(FullVersion);
+    FullVersion.innerHTML = "A többi mód eléréséért tölstsd le a python applickációnkat!"
+
+    secondquestion = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(secondquestion);
+    document.createAttribute("id", "SecondQuestion" + SecondQuestionCounter);
+    secondquestion.setAttribute("id", "SecondQuestion" + SecondQuestionCounter);
+    secondquestion.innerHTML = 'Quizt irnál vagy probálnál? (1 / 2): ';
+
+    AnswerInput2 = document.createElement("input");
+    document.createAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
+    AnswerInput2.setAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
+    document.querySelector('#SecondQuestion' + SecondQuestionCounter).appendChild(AnswerInput2);
+    AnswerInput2.setAttribute("maxlength", 1);
     
+    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
+    ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
+
+    SecondQuestionCounter += 1;
 };
 function QuizTestBegin() {
     difficultyWarning = document.createElement("p");
@@ -375,7 +394,6 @@ function ActualQuiz() {
         document.querySelector("#Question" + Runned).appendChild(quizAnswer);
         document.createAttribute("id", "Answer" + (index + 1));
         quizAnswer.setAttribute("id", "Answer" + (index + 1));
-        console.log(Answers[AnswerCounter].split("@", 2).length)
         quizAnswer.innerHTML = Answers[AnswerCounter].split("@", 1);
         AnswerCounter++;
     };
@@ -394,7 +412,11 @@ var Finished = false;
 var correctAnswerCounter = 0;
 function Finish() {
     Finished = false;
-    console.log("Finished", correctAnswerCounter + "/" + numberOfApps)
+    finish = document.createElement("p");
+    document.createAttribute("id", "FinishP");
+    finish.setAttribute("id", "FinishP");
+    document.querySelector(".python-page-lower").appendChild(finish);
+    finish.innerHTML = "A végső eredmény:" + correctAnswerCounter + "/" + numberOfApps;
 };
 
 window.onload = function() {
@@ -511,7 +533,8 @@ function AnswerChecking() {
                     };
                     break;
                 default:
-                    Running = false
+                    Running = true;
+                    console.log("Invalid Answer");
                     //Throwing back the "Asnwer" question and warning
                     break;
             };
