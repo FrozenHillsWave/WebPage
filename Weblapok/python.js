@@ -7,6 +7,7 @@ function CustomBackgroundGeneration() {
     background.src = "../Képek/PythonBackgroundBase.jpg";
     background.style.position = "absolute";
     background.style.filter = "brightness(40%)";
+    background.style.webkitUserDrag = "none";
     setInterval(() => {
         background.style.height = window.innerHeight;
         background.style.width = window.innerWidth;
@@ -42,24 +43,6 @@ function AppIconCreation() {
         newID = document.createAttribute("id", "appIconHolder" + number);
         AppIconHolder.setAttribute("id", "appIconHolder" + number);
         list.push(AppIconHolder)
-        //console.log(űist)
-        /*
-        window.addEventListener('resize', function(){
-            setTimeout(() => {
-                NE = 0
-            }, 0.000001);
-            GG.push(NE)
-            NE += document.getElementById("appIconHolder1").offsetWidth
-            for (let index = 0; index < numberOfApps; index++) {
-                document.getElementById("appIconHolder" + index).style.marginLeft = GG[index];
-                
-            }
-            setTimeout(() => {
-                GG = []
-            }, 0.00000001);
-            
-            console.log(GG)
-        });*/
 
         for (let index = 0; index < numberOfApps; index++) {
             CurrentAppIconWidthList.push(CurrentAppIconWidth)
@@ -99,7 +82,7 @@ function CampfireBase() {
         document.querySelector('#CampFireHolder').appendChild(campFireWood);
         document.createAttribute("id", "CampFire" + index);
         campFireWood.setAttribute("id", "CampFire" + index);
-        CampFireMiddle = CampHolderSize - campFireWood.offsetWidth/Math.sqrt(2)
+        CampFireMiddle = CampHolderSize - campFireWood.offsetWidth/1.35
         campFireWood.style.left = CampFireMiddle;
         campFireWood.style.width = CampHolderSize/2;
         campFireWood.style.height = CampHolderSize/8;
@@ -132,9 +115,10 @@ function CampfireBase() {
     campFireImg.setAttribute("id", "CampFireImg");
     campFireImg.style.width = CampHolderSize / 2;
     campFireImg.src = "../Képek/Blaze.png";
+    campFireImg.style.webkitUserDrag = "none";
     campFireImg.style.height = CampHolderSize / 2;
     campFireImg.style.position = "absolute"
-    campFireImg.style.left = CampFireMiddle;
+    campFireImg.style.left = CampFireMiddle + 10;
     campFireImg.style.top = CampHolderSize/2.25;
     campFireImg.style.zIndex = 103;
 };
@@ -143,7 +127,7 @@ function CampfireBlaze() {
     done = false;
     var size = campFireHolder.offsetHeight / 16;
     var id = null;
-    var blazeStart = Math.random() * (4 - 1.5) + 1.5;
+    var blazeStart = document.getElementById("CampFireImg").offsetWidth
     var shrink = Math.random() * (200 - 100) + 100;
     var speed = Math.random() * (3 - 1) + 1;
     var Colors = ["#E40230", "#E4101C", "#EA5B0C"]
@@ -279,26 +263,7 @@ function QuizSecondQuestionError() {
     SecondQuestionCounter += 1;
 };
 function QuizWritingBegin() {
-    FullVersion = document.createElement("p");
-    document.querySelector('.python-page-lower').appendChild(FullVersion);
-    FullVersion.innerHTML = "A többi mód eléréséért tölstsd le a python applickációnkat!"
-
-    secondquestion = document.createElement("p");
-    document.querySelector('.python-page-lower').appendChild(secondquestion);
-    document.createAttribute("id", "SecondQuestion" + SecondQuestionCounter);
-    secondquestion.setAttribute("id", "SecondQuestion" + SecondQuestionCounter);
-    secondquestion.innerHTML = 'Quizt irnál vagy probálnál? (1 / 2): ';
-
-    AnswerInput2 = document.createElement("input");
-    document.createAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
-    AnswerInput2.setAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
-    document.querySelector('#SecondQuestion' + SecondQuestionCounter).appendChild(AnswerInput2);
-    AnswerInput2.setAttribute("maxlength", 1);
     
-    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
-    ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
-
-    SecondQuestionCounter += 1;
 };
 function QuizTestBegin() {
     difficultyWarning = document.createElement("p");
@@ -347,6 +312,7 @@ function FullPythonAppWarning() {
 
     FullVersionQuestionCounter++;
 };
+
 var numberOfAnswers = 4;
 var Running = true;
 var Runned = 1;
@@ -398,6 +364,13 @@ function ActualQuiz() {
         AnswerCounter++;
     };
 
+    quizAnswerInputHolder = document.createElement("span");
+    document.createAttribute("id", "QuizAnswerInputHolder" + Runned);
+    quizAnswerInputHolder.setAttribute("id", "QuizAnswerInputHolder" + Runned);
+    document.querySelector("#Question" + Runned).appendChild(quizAnswerInputHolder);
+    quizAnswerInputHolder.innerHTML = "Válasz: ";
+
+
     quizAnswerInput = document.createElement("input");
     document.createAttribute("id", "QuizAnswerInput" + Runned);
     quizAnswerInput.setAttribute("id", "QuizAnswerInput" + Runned);
@@ -407,16 +380,15 @@ function ActualQuiz() {
     Runned++;
 };
 
-
 var Finished = false;
 var correctAnswerCounter = 0;
 function Finish() {
     Finished = false;
     finish = document.createElement("p");
-    document.createAttribute("id", "FinishP");
-    finish.setAttribute("id", "FinishP");
+    document.createAttribute("id", "Finish");
+    finish.setAttribute("id", "Finish");
     document.querySelector(".python-page-lower").appendChild(finish);
-    finish.innerHTML = "A végső eredmény:" + correctAnswerCounter + "/" + numberOfApps;
+    finish.innerHTML = "A végső eredmény: " + correctAnswerCounter + "/" + numberOfApps;
 };
 
 window.onload = function() {
@@ -426,8 +398,8 @@ window.onload = function() {
 };
 
 document.addEventListener("keydown", function () {
-    if (event.keyCode == "13") {
-        FirstQuestion = document.getElementById("AnswerInput" + FirstQuestionCounter).value;
+    var FirstQuestion = document.getElementById("AnswerInput" + FirstQuestionCounter).value;
+    if (event.keyCode == "13" && FirstQuestion.length != 0) {
         switch (FirstQuestion) {
             case "igen":
             case "Igen":
@@ -447,14 +419,12 @@ document.addEventListener("keydown", function () {
 
 function Second() {
     document.addEventListener("keydown", function () {
-        if (event.keyCode == "13") { 
-            SecondQuestion = document.getElementById("AnswerInput2_" + SecondQuestionCounter).value;
+        var SecondQuestion = document.getElementById("AnswerInput2_" + SecondQuestionCounter).value;
+        if (event.keyCode == "13" && SecondQuestion.length != 0)  { 
             switch (SecondQuestion) {
-                case 1:
                 case "1":
                     QuizWritingBegin();
                     break;
-                case 2:
                 case "2":
                     QuizTestBegin();
                     Difficulty();
@@ -469,8 +439,9 @@ function Second() {
 
 function Difficulty() {
     document.addEventListener("keydown", function () {
-        if (event.keyCode == "13") { 
-            DifficultyChoosing = document.getElementById("DifficultyInput").value;
+        var DifficultyChoosing = document.getElementById("DifficultyInput").value;
+        if (event.keyCode == "13" && DifficultyChoosing.length != 0) { 
+            
             switch (DifficultyChoosing) {
                 case "1":
                     setInterval(() => {
@@ -495,41 +466,51 @@ function Difficulty() {
 
 function AnswerChecking() {
     document.addEventListener("keydown", function () {
-        Answer = document.getElementById("QuizAnswerInput" + (Runned - 1)).value;
+        var QuestionVis = document.getElementById("appIconHolder" + (Runned - 1));
+        var Answer = document.getElementById("QuizAnswerInput" + (Runned - 1)).value;
         if (event.keyCode == "13" && Answer.length != 0) {
             AnswerInputItem = document.getElementById("QuizAnswerInput" + (Runned - 1));
-            ReplaceingUsedInputs("#Question" + (Runned - 1), AnswerInputItem.value, AnswerInputItem)
+            ReplaceingUsedInputs("#Question" + (Runned-1), AnswerInputItem.value, AnswerInputItem);
+
             switch (Answer) {
                 case "1":
                     Running = true;
                     if (Answers[AnswerCounter-4].split("@", 2).length == 2) {
+                        QuestionVis.style.backgroundColor = "green";
                         correctAnswerCounter++;
                     } else {
-                        console.log("Wrong Answer")
+                        QuestionVis.style.backgroundColor = "red";
+                        //console.log("Wrong Answer")
                     };
                     break;
                 case "2":
                     Running = true;
                     if (Answers[AnswerCounter-3].split("@", 2).length == 2) {
                         correctAnswerCounter++;
+                        QuestionVis.style.backgroundColor = "green";
                     } else {
-                        console.log("Wrong Answer")
+                        QuestionVis.style.backgroundColor = "red";
+                        //console.log("Wrong Answer")
                     };
                     break;
                 case "3":
                     Running = true;
                     if (Answers[AnswerCounter-2].split("@", 2).length == 2) {
                         correctAnswerCounter++;
+                        QuestionVis.style.backgroundColor = "green";
                     } else {
-                        console.log("Wrong Answer")
+                        QuestionVis.style.backgroundColor = "red";
+                        //console.log("Wrong Answer")
                     };
                     break;
                 case "4":
                     Running = true;
                     if (Answers[AnswerCounter-1].split("@", 2).length == 2) {
                         correctAnswerCounter++;
+                        QuestionVis.style.backgroundColor = "green";
                     } else {
-                        console.log("Wrong Answer")
+                        QuestionVis.style.backgroundColor = "red";
+                        //console.log("Wrong Answer")
                     };
                     break;
                 default:
