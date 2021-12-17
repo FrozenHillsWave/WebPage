@@ -73,7 +73,7 @@ function CampfireBase() {
     campFireHolder.style.height = CampHolderSize;
     campFireHolder.style.position = "relative"
     campFireHolder.style.top = window.innerHeight/3;
-    campFireHolder.style.border = "1px solid red";
+    //campFireHolder.style.border = "1px solid red";
     campFireHolder.style.left = window.innerWidth - campFireHolder.offsetWidth;
     campFireHolder.style.zIndex = 100;
     
