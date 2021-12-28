@@ -78,6 +78,48 @@ button:hover {
     color: grey;
 }
 
+#CampFireHolder {
+    position: relative;
+    z-index: 100;
+    left: 80%;
+    top: 45%;
+    width: 20%;
+    height: 50%;}
+#CampFireImg {
+    position: relative;
+    height: 50%;
+    width: 60%;
+    left: 22.5%;
+    top: 40%;
+    z-index: 103;}
+#CampFireWood1 {
+    position: absolute;
+    width: 60%;
+    height: 10%;
+    left: 20%;
+    bottom: 10%;
+    background-color: brown;
+    transform: rotate(170deg);
+    border-radius: 10px;
+    z-index: 102;}
+#CampFireWood2 {
+    position: absolute;
+    width: 60%;
+    height: 10%;
+    left: 20%;
+    bottom: 10%;
+    background-color: brown;
+    transform: rotate(-350deg);
+    filter: brightness(80%);
+    border-radius: 10px;
+    z-index: 101;}
+#CampFireWoodFront {
+    width: 20%;
+    height: 100%;
+    background-color: #654321;
+    border-radius: 10px;
+}
+
 
 #minimalize_window {
     transition-duration: 0.1s;

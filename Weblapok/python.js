@@ -63,68 +63,11 @@ function AppIconCreation() {
         };
 };
 
-function CampfireBase() {
-    campFireHolder = document.createElement("div");
-    document.querySelector('body').appendChild(campFireHolder);
-    document.createAttribute("id", "CampFireHolder");
-    campFireHolder.setAttribute("id", "CampFireHolder");
-    CampHolderSize = window.innerHeight/2;
-    campFireHolder.style.width = CampHolderSize;
-    campFireHolder.style.height = CampHolderSize;
-    campFireHolder.style.position = "relative"
-    campFireHolder.style.top = window.innerHeight/3;
-    //campFireHolder.style.border = "1px solid red";
-    campFireHolder.style.left = window.innerWidth - campFireHolder.offsetWidth;
-    campFireHolder.style.zIndex = 100;
-    
-    for (let index = 0; index < 2; index++) {
-        campFireWood = document.createElement("div");
-        document.querySelector('#CampFireHolder').appendChild(campFireWood);
-        document.createAttribute("id", "CampFire" + index);
-        campFireWood.setAttribute("id", "CampFire" + index);
-        CampFireMiddle = CampHolderSize - campFireWood.offsetWidth/1.35
-        campFireWood.style.left = CampFireMiddle;
-        campFireWood.style.width = CampHolderSize/2;
-        campFireWood.style.height = CampHolderSize/8;
-        campFireWood.style.position = "absolute";
-        campFireWood.style.top = CampHolderSize - CampHolderSize/6;
-        campFireWood.style.zIndex = 101;
-        if (index == 1) {
-            campFireWood.style.transform = "rotate(350deg)";
-            campFireWood.style.top += 10;
-        } else {
-            campFireWood.style.transform = "rotate(190deg)";
-            campFireWood.style.filter = "brightness(80%)";
-        };
-        campFireWood.style.borderRadius = "10px";
-        campFireWood.style.backgroundColor = "brown";
-
-        campFireWoodFront = document.createElement("div");
-        document.querySelector('#CampFire' + index).appendChild(campFireWoodFront);
-        campFireWoodFront.style.width = campFireWood.offsetWidth/4;
-        campFireWoodFront.style.height = campFireWood.offsetHeight;
-        campFireWoodFront.style.marginLeft = campFireWood.offsetWidth - campFireWood.offsetWidth/4;
-        campFireWoodFront.style.borderRadius = "10px";
-        campFireWoodFront.style.backgroundColor = "#654321";
-        campFireWoodFront.style.zIndex = 102; 
-    };
-
-    campFireImg = document.createElement("img");
-    document.querySelector('#CampFireHolder').appendChild(campFireImg);
-    document.createAttribute("id", "CampFireImg");
-    campFireImg.setAttribute("id", "CampFireImg");
-    campFireImg.style.width = CampHolderSize / 2;
-    campFireImg.src = "../Képek/Blaze.png";
-    campFireImg.style.webkitUserDrag = "none";
-    campFireImg.style.height = CampHolderSize / 2;
-    campFireImg.style.position = "absolute"
-    campFireImg.style.left = CampFireMiddle + 10;
-    campFireImg.style.top = CampHolderSize/2.25;
-    campFireImg.style.zIndex = 103;
-};
 done = true;
 function CampfireBlaze() {
     done = false;
+    var campFireHolder = document.getElementById("CampFireHolder")
+    var CampHolderSize = campFireHolder.offsetWidth
     var size = campFireHolder.offsetHeight / 16;
     var id = null;
     var blazeStart = document.getElementById("CampFireImg").offsetWidth
@@ -158,8 +101,6 @@ function CampfireBlaze() {
             } else {
                 blazeStart -= 0.5;
             }
-            //console.log(size)
-            //console.log(Position)
             blazePixel.style.height = size + "px";
             blazePixel.style.width = size + "px";
             blazePixel.style.left = blazeStart + "px";
@@ -167,14 +108,6 @@ function CampfireBlaze() {
             blazePixel.style.top = Position + 'px'
         };
     };
-};
-function Campfire() {
-    CampfireBase();
-    setInterval(() => {
-        if (done == true) {
-            CampfireBlaze();
-        };
-    }, 10);
 };
 
 
@@ -263,7 +196,26 @@ function QuizSecondQuestionError() {
     SecondQuestionCounter += 1;
 };
 function QuizWritingBegin() {
+    FullVersion = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(FullVersion);
+    FullVersion.innerHTML = "A többi mód eléréséért tölstsd le a python applickációnkat!"
+
+    secondquestion = document.createElement("p");
+    document.querySelector('.python-page-lower').appendChild(secondquestion);
+    document.createAttribute("id", "SecondQuestion" + SecondQuestionCounter);
+    secondquestion.setAttribute("id", "SecondQuestion" + SecondQuestionCounter);
+    secondquestion.innerHTML = 'Quizt irnál vagy probálnál? (1 / 2): ';
+
+    AnswerInput2 = document.createElement("input");
+    document.createAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
+    AnswerInput2.setAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
+    document.querySelector('#SecondQuestion' + SecondQuestionCounter).appendChild(AnswerInput2);
+    AnswerInput2.setAttribute("maxlength", 1);
     
+    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
+    ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
+
+    SecondQuestionCounter += 1;
 };
 function QuizTestBegin() {
     difficultyWarning = document.createElement("p");
@@ -394,7 +346,11 @@ function Finish() {
 window.onload = function() {
     CustomBackgroundGeneration();
     AppIconCreation();
-    Campfire();
+    setInterval(() => {
+        if (done == true) {
+            CampfireBlaze();
+        };
+    }, 10);
 };
 
 document.addEventListener("keydown", function () {
