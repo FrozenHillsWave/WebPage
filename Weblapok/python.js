@@ -42,7 +42,7 @@ function AppIconCreation() {
         number = index + 1;
         newID = document.createAttribute("id", "appIconHolder" + number);
         AppIconHolder.setAttribute("id", "appIconHolder" + number);
-        list.push(AppIconHolder);
+        list.push(AppIconHolder)
 
         for (let index = 0; index < numberOfApps; index++) {
             CurrentAppIconWidthList.push(CurrentAppIconWidth)
@@ -50,7 +50,7 @@ function AppIconCreation() {
         };
         for (let x = 0; x < numberOfApps; x++) {     
             setInterval(() => {
-                MaxWidth = document.getElementById("system-tray").offsetWidth;
+                MaxWidth = document.getElementById("system-tray").offsetWidth
                 AppIconWidth = document.getElementById("appIconHolder" + (x+1)).style.width = MaxWidth / numberOfApps;
                 document.getElementById("appIconHolder" + (x+1)).style.marginLeft = CurrentAppIconWidthList[x];
         }, 1);}
@@ -82,7 +82,7 @@ function CampfireBase() {
         document.querySelector('#CampFireHolder').appendChild(campFireWood);
         document.createAttribute("id", "CampFire" + index);
         campFireWood.setAttribute("id", "CampFire" + index);
-        CampFireMiddle = CampHolderSize - campFireWood.offsetWidth/1.35;
+        CampFireMiddle = CampHolderSize - campFireWood.offsetWidth/1.35
         campFireWood.style.left = CampFireMiddle;
         campFireWood.style.width = CampHolderSize/2;
         campFireWood.style.height = CampHolderSize/8;
@@ -181,13 +181,13 @@ function Campfire() {
 function BasicError(Option1, Option2) {
     error = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(error);
-    error.innerHTML = 'Hiba, kérem adjon meg helyes választ ' + Option1 + ' vagy '+ Option2 +'!';
+    error.innerHTML = 'Hiba, kérem adjon meg helyes választ ' + Option1 + ' vagy '+ Option2 +'!'
 };
 function ReplaceingUsedInputs(replaceHolder, replaceText, replaceItem) {
     replacement = document.createElement("span");
     document.querySelector(replaceHolder).appendChild(replacement);
     replacement.innerHTML = replaceText;
-    replaceItem.remove();
+    replaceItem.remove() 
 };
 
 
@@ -263,34 +263,14 @@ function QuizSecondQuestionError() {
     SecondQuestionCounter += 1;
 };
 function QuizWritingBegin() {
-    FullVersion = document.createElement("p");
-    document.querySelector('.python-page-lower').appendChild(FullVersion);
-    FullVersion.innerHTML = "A többi mód eléréséért tölstsd le a python applickációnkat!"
-
-    secondquestion = document.createElement("p");
-    document.querySelector('.python-page-lower').appendChild(secondquestion);
-    document.createAttribute("id", "SecondQuestion" + SecondQuestionCounter);
-    secondquestion.setAttribute("id", "SecondQuestion" + SecondQuestionCounter);
-    secondquestion.innerHTML = 'Quizt irnál vagy probálnál? (1 / 2): ';
-
-    AnswerInput2 = document.createElement("input");
-    document.createAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
-    AnswerInput2.setAttribute("id", "AnswerInput2_" + (SecondQuestionCounter + 1));
-    document.querySelector('#SecondQuestion' + SecondQuestionCounter).appendChild(AnswerInput2);
-    AnswerInput2.setAttribute("maxlength", 1);
-
-    AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter)
-    ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
-
-    SecondQuestionCounter += 1;
+    
 };
-
 function QuizTestBegin() {
     difficultyWarning = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(difficultyWarning);
     document.createAttribute("id", "DifficultyWarning");
     difficultyWarning.setAttribute("id", "DifficultyWarning");
-    difficultyWarning.innerHTML = 'Figyelmeztetés! <br>  A helyes válaszokat 0-4-ig lehet választani, a 0 arra utal ha nincs helyes válasz! <br> 1) Nagyon Könnyű (10) <br> 2) Könnyű (20) 🔒 <br> 3) Közepes (30) 🔒 <br> 4) Nehéz (50) 🔒 <br> 5) Ultra Nehéz (100) 🔒 <br> 6) Halál mod (200) 🔒 <br> 7) Egyéb 🔒  <br> Válasz: ';
+    difficultyWarning.innerHTML = '1) Nagyon Könnyű (10) <br> 2) Könnyű (20) 🔒 <br> 3) Közepes (30) 🔒 <br> 4) Nehéz (50) 🔒 <br> 5) Ultra Nehéz (100) 🔒 <br> 6) Halál mod (200) 🔒 <br> 7) Egyéb 🔒  <br> Válasz: ';
     
     difficultyInput = document.createElement("input");
     document.createAttribute("id", "DifficultyInput");
@@ -350,6 +330,7 @@ function ActualQuiz() {
     } catch (error) {
         
     };
+
 
     Running = false
 
@@ -467,6 +448,9 @@ function Difficulty() {
                         if (Running == true && Runned <= 10) {
                             ActualQuiz();
                             AnswerChecking();
+                        } else if (Runned == 11) {
+                            Runned++;
+                            Finished = true;
                         } else if (Finished == true) {
                             Finish();
                         };
@@ -490,10 +474,6 @@ function AnswerChecking() {
 
             switch (Answer) {
                 case "1":
-                    if (Runned == 11) {
-                        Runned++;
-                        Finished = true;}
-
                     Running = true;
                     if (Answers[AnswerCounter-4].split("@", 2).length == 2) {
                         QuestionVis.style.backgroundColor = "green";
@@ -504,10 +484,6 @@ function AnswerChecking() {
                     };
                     break;
                 case "2":
-                    if (Runned == 11) {
-                        Runned++;
-                        Finished = true;}
-
                     Running = true;
                     if (Answers[AnswerCounter-3].split("@", 2).length == 2) {
                         correctAnswerCounter++;
@@ -518,10 +494,6 @@ function AnswerChecking() {
                     };
                     break;
                 case "3":
-                    if (Runned == 11) {
-                        Runned++;
-                        Finished = true;}
-
                     Running = true;
                     if (Answers[AnswerCounter-2].split("@", 2).length == 2) {
                         correctAnswerCounter++;
@@ -532,10 +504,6 @@ function AnswerChecking() {
                     };
                     break;
                 case "4":
-                    if (Runned == 11) {
-                        Runned++;
-                        Finished = true;}
-
                     Running = true;
                     if (Answers[AnswerCounter-1].split("@", 2).length == 2) {
                         correctAnswerCounter++;
@@ -547,6 +515,7 @@ function AnswerChecking() {
                     break;
                 default:
                     Running = true;
+                    QuestionVis.style.backgroundColor = "red";
                     console.log("Invalid Answer");
                     //Throwing back the "Asnwer" question and warning
                     break;
