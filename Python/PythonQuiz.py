@@ -209,8 +209,8 @@ def QuizMaker():
             x.write(str(input("Adja meg az harmadik választ a kérdésre: ")))
             x.write("\n")
             x.write(str(input("Adja meg az negyedik választ a kérdésre: ")))
-            for newline in range(2):
-                x.write("\n")
+            x.write("\n")
+            x.write("\n")
             print("Kérdés sikeresen hozzáadva!")
 
         check = str(input("Szerednéd le ellenőrizni?: "))
