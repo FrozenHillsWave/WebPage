@@ -11,11 +11,9 @@ body {
 h2 {
     position: relative;
     top: 35%;
-    font-weight: bolder;
-    font-family: 'Source Code Pro', monospace;
 }
 
-p {
+p, h2 {
     font-weight: bolder;
     font-family: 'Source Code Pro', monospace;
 }
@@ -26,7 +24,9 @@ p {
     background-color: grey;
     width: 7.5%;
     height: 100%;
-    left: 38.75vw;}
+    left: 38.75vw;
+}
+
 #maximize_window {
     transition-duration: 0.1s;
     position: relative;
@@ -34,7 +34,9 @@ p {
     width: 7.5%;
     height: 100%;
     left: 42.25vw;
-    bottom: 136%;}
+    bottom: 136%;
+}
+
 #close_window {
     transition-duration: 0.1s;
     position: relative;
@@ -42,17 +44,25 @@ p {
     width: 7.5%;
     height: 100%;
     left: 45.85vw;
-    bottom: 271%;}
+    bottom: 271%;
+}
+
 :hover#maximize_window {
     transition-duration: 0.1s;
-    background-color: lightgray;}
+    background-color: lightgray;
+}
+
 :hover#minimalize_window {
     transition-duration: 0.1s;
-    background-color: lightgray;}
+    background-color: lightgray;
+}
+
 :hover#close_window {
     transition-duration: 0.1s;
     background-color: red;
-    color: white;}
+    color: white;
+}
+
 
 .function_window_text {
     cursor: default;
@@ -63,7 +73,9 @@ p {
     top: 25%;
     left: 40%;
     font-family: 'Source Code Pro', monospace;
-    font-weight: 1000;}
+    font-weight: 1000;
+}
+
 
 .commandprompt_input {
     width: 25%;
@@ -75,9 +87,13 @@ p {
     font-family: 'DotGothic16', sans-serif;
     font-size: 100%;
     background-color: transparent;
-    color: white;}
+    color: white;
+}
+
 .commandprompt_input:focus {
-    outline: none;}
+    outline: none;
+}
+
 
 .futtatas {
     top: -6.75%;
@@ -86,12 +102,16 @@ p {
     background-color: transparent;
     font-family: 'DotGothic16', sans-serif;
     color: white;
-    border: none;}
+    border: none;
+}
+
 #output {
     font-family: 'DotGothic16', sans-serif;
     position: relative;
     left: 2.5%;
-    color: white;}
+    color: white;
+}
+
 
 .project_teammates_title_right {
     position: relative;
@@ -157,35 +177,47 @@ p {
     color: white;
 }
 #output {
-    font-weight: normal;}
+    font-weight: normal;
+}
+
 
 .robi-card-holder {
     position: absolute;
     width: 20%;
     height: 30%;
     top: 20%;
-    left: 2%;}
+    left: 2%;
+}
+
 .darius-card-holder {
     position: absolute;
     width: 20%;
     height: 30%;
     top: 60%;
-    left: 2%;}
+    left: 2%;
+}
+
 #darius-pic {
     position: relative;
-    left: -5%;}
+    left: -5%;
+}
+
 .daniel-card-holder {
     position: absolute;
     width: 20%;
     height: 30%;
     top: 60%;
-    right: 2%;}
+    right: 2%;
+}
+
 .david-card-holder {
     position: absolute;
     width: 20%;
     height: 30%;
     top: 20%;
-    right: 2%;}
+    right: 2%;
+}
+
 
 .robi-card, .darius-card, .daniel-card, .david-card {
     border-radius: 5%;
@@ -195,18 +227,29 @@ p {
     height: 100%;
     text-align: center;
     transition: transform 0.5s;
-    transform-style: preserve-3d;}
+    transform-style: preserve-3d;
+}
+
 .robi-card-holder:hover .robi-card, .darius-card-holder:hover .darius-card, .daniel-card-holder:hover .daniel-card, .david-card-holder:hover .david-card {
-    transform: rotateY(180deg);}
+    transform: rotateY(180deg);
+}
+
 .robi-card-front, .robi-card-back, .darius-card-front, .darius-card-back, .daniel-card-front, .daniel-card-back, .david-card-front, .david-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;}
+    backface-visibility: hidden;
+}
+
 .robi-card-front, .darius-card-front, .daniel-card-front, .david-card-front {
     border-radius: 5%;
-    background-color: lightseagreen;}
+    background-color: lightseagreen;
+}
+
 .robi-card-back, .darius-card-back, .daniel-card-back, .david-card-back {
-    transform: rotateY(180deg);}
+    transform: rotateY(180deg);
+}
+
 .robi-card-back {
-    height: 100%;}
+    height: 100%;
+}

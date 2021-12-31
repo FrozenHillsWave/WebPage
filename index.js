@@ -1,12 +1,12 @@
 function bezar() {
-    alert("Ablak bezárva!");
-  }
+  alert("Ablak bezárva!");
+}
 function maximize() {
-    alert("Ablak maximalizálva!");
-  }
+  alert("Ablak maximalizálva!");
+}
 function minimalize() {
-    alert("Ablak minimalizálva!");
-  }
+  alert("Ablak minimalizálva!");
+}
 
 document.addEventListener("keydown", function () {
   if (event.keyCode == "13") {
@@ -19,6 +19,7 @@ function ClearInput() {
   document.getElementById("commandprompt_input").value = "",
   500
 )};
+
 function commands() {
     commandList = ["ping", "pong", "partnereink", "logonk", "tagok", "python"]
     var command = document.getElementById("commandprompt_input").value;
