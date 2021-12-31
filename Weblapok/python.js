@@ -327,8 +327,6 @@ function ActualQuiz() {
     quizAnswerInput.setAttribute("id", "QuizAnswerInput" + Runned);
     document.querySelector("#Question" + Runned).appendChild(quizAnswerInput);
     quizAnswerInput.setAttribute("maxlength", 1);
-
-    Runned++;
 };
 
 var Finished = false;
@@ -395,13 +393,13 @@ function Difficulty() {
             switch (DifficultyChoosing) {
                 case "1":
                     setInterval(() => {
-                        if (Running && Runned <= 10) {
+                        if (Running == true && Runned <= 10) {
                             ActualQuiz();
                             AnswerChecking();
                         } else if (Runned == 11) {
                             Runned++;
                             Finished = true;
-                        } else if (Finished) Finish();
+                        } else if (Finished == true) Finish();
                     }, 500);
                     break;
                 default:
@@ -414,12 +412,13 @@ function Difficulty() {
 
 function AnswerChecking() {
     document.addEventListener("keydown", () => {
-        var QuestionVis = document.getElementById("appIconHolder" + (Runned - 1));
-        var Answer = document.getElementById("QuizAnswerInput" + (Runned - 1)).value;
+        var QuestionVis = document.getElementById("appIconHolder" + Runned);
+        console.log(QuestionVis)
+        console.log(Runned)
+        var Answer = document.getElementById("QuizAnswerInput" + Runned).value;
         if (event.keyCode == "13" && Answer.length != 0) {
-            AnswerInputItem = document.getElementById("QuizAnswerInput" + (Runned - 1));
-            ReplaceingUsedInputs("#Question" + (Runned-1), AnswerInputItem.value, AnswerInputItem);
-
+            AnswerInputItem = document.getElementById("QuizAnswerInput" + Runned);
+            ReplaceingUsedInputs("#Question" + Runned, AnswerInputItem.value, AnswerInputItem);
             switch (Answer) {
                 case "1":
                     buttonHandler(AnswerCounter-4);
@@ -434,6 +433,7 @@ function AnswerChecking() {
                     buttonHandler(AnswerCounter-1);
                     break;
                 default:
+                    Runned++;
                     Running = true;
                     QuestionVis.style.backgroundColor = "red";
                     console.log("Invalid Answer");
@@ -444,6 +444,7 @@ function AnswerChecking() {
 
         function buttonHandler(num) {
             Running = true;
+            Runned++;
             if (Answers[num].split("@", 2).length == 2) {
                 correctAnswerCounter++;
                 QuestionVis.style.backgroundColor = "green";
