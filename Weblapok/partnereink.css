@@ -7,7 +7,7 @@ body {
 }
 
 a:any-link {
-    color: black;
+    color: #000;
     text-decoration: none;
 }
 
@@ -15,12 +15,12 @@ a:any-link {
     position: absolute;
     width: 30%;
     height: 30%;
-    transform: skew(17.5deg);
-    
-    background-color: #00aeff}
+    transform: skew(17.5deg);    
+    background-color: #00aeff
+}
 
 .member-div:hover {
-    background-color: #0091d4d3;;
+    background-color: #0091d4d3;
 }
 
 h1 {
@@ -53,15 +53,21 @@ h3 {
     top: 10%;
     left: 7.5%;
 }
+
 .darius {
     top: 10%;
     right: 7.5%;
 }
+
 .daniel {
     bottom: 10%;
-    left: 7.5%;}
+    left: 7.5%;
+}
+
 #daniel {
-    left: 57.5%;}
+    left: 57.5%;
+}
+
 .david {
     bottom: 10%;
     right: 7.5%;

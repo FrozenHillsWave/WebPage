@@ -1,5 +1,5 @@
 var numberOfApps = 10;
-var CurrentAppIconWidthList =  [];
+var CurrentAppIconWidthList = [];
 
 function CustomBackgroundGeneration() {
     background = document.createElement("img");
@@ -60,7 +60,7 @@ function AppIconCreation() {
         document.getElementById("appIconHolder" + number).style.zIndex = "996";
         document.getElementById("appIconHolder" + number).style.backgroundColor = "grey";
         document.getElementById("appIconHolder" + number).style.border = "1px solid black"
-        };
+    };
 };
 
 done = true;
@@ -110,19 +110,18 @@ function CampfireBlaze() {
     };
 };
 
-
 function BasicError(Option1, Option2) {
     error = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(error);
     error.innerHTML = 'Hiba, kérem adjon meg helyes választ ' + Option1 + ' vagy '+ Option2 +'!'
 };
+
 function ReplaceingUsedInputs(replaceHolder, replaceText, replaceItem) {
     replacement = document.createElement("span");
     document.querySelector(replaceHolder).appendChild(replacement);
     replacement.innerHTML = replaceText;
     replaceItem.remove() 
 };
-
 
 var FirstQuestionCounter = 1
 var SecondQuestionCounter = 1
@@ -147,6 +146,7 @@ function QuizFirstQuestionError() {
     
     FirstQuestionCounter += 1
 };
+
 function QuizFirstQuestionNegative() {
     bye = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(bye);
@@ -155,6 +155,7 @@ function QuizFirstQuestionNegative() {
     AnswerInputItem = document.getElementById("AnswerInput" + FirstQuestionCounter)
     ReplaceingUsedInputs('#FirstQuestion' + FirstQuestionCounter, AnswerInputItem.value, AnswerInputItem)
 };
+
 function QuizFirstQuestionPositive() {
     secondquestion = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(secondquestion);
@@ -173,7 +174,6 @@ function QuizFirstQuestionPositive() {
 
     SecondQuestionCounter += 1;
 };
-
 
 function QuizSecondQuestionError() {
     BasicError('"1"', '"2"');
@@ -195,10 +195,11 @@ function QuizSecondQuestionError() {
 
     SecondQuestionCounter += 1;
 };
+
 function QuizWritingBegin() {
     FullVersion = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(FullVersion);
-    FullVersion.innerHTML = "A többi mód eléréséért tölstsd le a python applickációnkat!"
+    FullVersion.innerHTML = "A további módok eléréséhez töltsd le a python programunkat!"
 
     secondquestion = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(secondquestion);
@@ -217,6 +218,7 @@ function QuizWritingBegin() {
 
     SecondQuestionCounter += 1;
 };
+
 function QuizTestBegin() {
     difficultyWarning = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(difficultyWarning);
@@ -234,8 +236,8 @@ function QuizTestBegin() {
     ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
 };
 
-var FullPythonCounter = 1;
-var FullVersionQuestionCounter = 1;
+var FullPythonCounter = 1, FullVersionQuestionCounter = 1;
+
 function FullPythonAppWarning() {
     if (FullPythonCounter == 1) {
         AnswerInputItem = document.getElementById("DifficultyInput");
@@ -279,10 +281,7 @@ function ActualQuiz() {
             AnswerInputItem = document.getElementById("DifficultyInput");
             ReplaceingUsedInputs('#FullVersionQuestion' + (FullVersionQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
         };
-    } catch (error) {
-        
-    };
-
+    } catch (error) {};
 
     Running = false
 
@@ -347,23 +346,19 @@ window.onload = function() {
     CustomBackgroundGeneration();
     AppIconCreation();
     setInterval(() => {
-        if (done == true) {
-            CampfireBlaze();
-        };
+        if (done) CampfireBlaze();
     }, 10);
 };
 
-document.addEventListener("keydown", function () {
+document.addEventListener("keydown", () => {
     var FirstQuestion = document.getElementById("AnswerInput" + FirstQuestionCounter).value;
     if (event.keyCode == "13" && FirstQuestion.length != 0) {
-        switch (FirstQuestion) {
+        switch (FirstQuestion.toLowerCase()) {
             case "igen":
-            case "Igen":
                 QuizFirstQuestionPositive();
                 Second();
                 break;
             case "nem":
-            case "Nem":
                 QuizFirstQuestionNegative();
                 break;
             default:
@@ -397,19 +392,16 @@ function Difficulty() {
     document.addEventListener("keydown", function () {
         var DifficultyChoosing = document.getElementById("DifficultyInput").value;
         if (event.keyCode == "13" && DifficultyChoosing.length != 0) { 
-            
             switch (DifficultyChoosing) {
                 case "1":
                     setInterval(() => {
-                        if (Running == true && Runned <= 10) {
+                        if (Running && Runned <= 10) {
                             ActualQuiz();
                             AnswerChecking();
                         } else if (Runned == 11) {
                             Runned++;
                             Finished = true;
-                        } else if (Finished == true) {
-                            Finish();
-                        };
+                        } else if (Finished) Finish();
                     }, 500);
                     break;
                 default:
@@ -421,7 +413,7 @@ function Difficulty() {
 };
 
 function AnswerChecking() {
-    document.addEventListener("keydown", function () {
+    document.addEventListener("keydown", () => {
         var QuestionVis = document.getElementById("appIconHolder" + (Runned - 1));
         var Answer = document.getElementById("QuizAnswerInput" + (Runned - 1)).value;
         if (event.keyCode == "13" && Answer.length != 0) {
@@ -430,52 +422,35 @@ function AnswerChecking() {
 
             switch (Answer) {
                 case "1":
-                    Running = true;
-                    if (Answers[AnswerCounter-4].split("@", 2).length == 2) {
-                        QuestionVis.style.backgroundColor = "green";
-                        correctAnswerCounter++;
-                    } else {
-                        QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
-                    };
+                    buttonHandler(AnswerCounter-4);
                     break;
                 case "2":
-                    Running = true;
-                    if (Answers[AnswerCounter-3].split("@", 2).length == 2) {
-                        correctAnswerCounter++;
-                        QuestionVis.style.backgroundColor = "green";
-                    } else {
-                        QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
-                    };
+                    buttonHandler(AnswerCounter-3);
                     break;
                 case "3":
-                    Running = true;
-                    if (Answers[AnswerCounter-2].split("@", 2).length == 2) {
-                        correctAnswerCounter++;
-                        QuestionVis.style.backgroundColor = "green";
-                    } else {
-                        QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
-                    };
+                    buttonHandler(AnswerCounter-2);
                     break;
                 case "4":
-                    Running = true;
-                    if (Answers[AnswerCounter-1].split("@", 2).length == 2) {
-                        correctAnswerCounter++;
-                        QuestionVis.style.backgroundColor = "green";
-                    } else {
-                        QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
-                    };
+                    buttonHandler(AnswerCounter-1);
                     break;
                 default:
                     Running = true;
                     QuestionVis.style.backgroundColor = "red";
                     console.log("Invalid Answer");
-                    //Throwing back the "Asnwer" question and warning
+                    //Throwing back the "Answer" question and warning
                     break;
             };
         };
     });
+
+    function buttonHandler(num) {
+        Running = true;
+        if (Answers[num].split("@", 2).length == 2) {
+            correctAnswerCounter++;
+            QuestionVis.style.backgroundColor = "green";
+        } else {
+            QuestionVis.style.backgroundColor = "red";
+            //console.log("Wrong Answer")
+        };
+    }
 };
