@@ -3,14 +3,18 @@ body {
 }
 
 .python-page-upper {
-    background-color: white;
-    height: 5%;}
+    background-color: #fff;
+    height: 5%;
+}
+
 .python-page-lower {
-    background-color: black;
+    background-color: #000;
     overflow-x: hidden;
     overflow-y: scroll;
     height: 100%;
-    width: 100%;}
+    width: 100%;
+}
+
 .python-page {
     z-index: 100;
     position: absolute;
@@ -18,14 +22,17 @@ body {
     left: 4%;
     height: 80%;
     width: 75%;
-    filter: drop-shadow(0px 0px 20px black);}
+    filter: drop-shadow(0px 0px 20px #000)
+}
 
 #python-logo {
     -webkit-user-drag: none;
     position: relative;
     top: 5%;
     left: 0.5%;
-    height: 90%;}
+    height: 90%;
+}
+
 #python-logo-title {
     top: -1.5%;
     left: 2.5vw;
@@ -33,14 +40,14 @@ body {
     position: absolute;
     font-family: Source Code Pro, monospace;
     font-weight: 900;
-    color: black;
+    color: #000;
 }
 
 .system-tray {
     opacity: 100%;
     z-index: 2;
     position: sticky;
-    background-color: black;
+    background-color: #000;
     height: 5%;
     top: 100%;
 }
@@ -49,7 +56,7 @@ p {
     font-family: 'Courier New', Courier, monospace;
     position: relative;
     left: 1%;
-    color: white;
+    color: #fff;
 }
 
 input {
@@ -62,9 +69,12 @@ input {
     font-family: 'Courier New', Courier, monospace;
     font-size: 100%;
     background-color: transparent;
-    color: white;}
+    color: #fff;
+}
+
 input:focus {
-    outline: none;}
+    outline: none;
+}
 
 button {
     border: none;
@@ -72,10 +82,11 @@ button {
     font-family: 'Courier New', Courier, monospace;
     font-size: 100%;
     background-color: transparent;
-    color: white;
+    color: #fff;
 }
+
 button:hover {
-    color: grey;
+    color: #808080;
 }
 
 #CampFireHolder {
@@ -84,35 +95,39 @@ button:hover {
     left: 80%;
     top: 45%;
     width: 20%;
-    height: 50%;}
+    height: 50%;
+}
+
 #CampFireImg {
     position: relative;
     height: 50%;
     width: 60%;
     left: 22.5%;
     top: 40%;
-    z-index: 103;}
-#CampFireWood1 {
+    z-index: 103;
+}
+
+#CampFireWood1, #CampFireWood2 {
     position: absolute;
     width: 60%;
     height: 10%;
     left: 20%;
     bottom: 10%;
-    background-color: brown;
-    transform: rotate(170deg);
+    background-color: #a52a2a;
     border-radius: 10px;
-    z-index: 102;}
+}
+
+#CampFireWood1 {
+    transform: rotate(170deg);
+    z-index: 102;
+}
+
 #CampFireWood2 {
-    position: absolute;
-    width: 60%;
-    height: 10%;
-    left: 20%;
-    bottom: 10%;
-    background-color: brown;
     transform: rotate(-350deg);
     filter: brightness(80%);
-    border-radius: 10px;
-    z-index: 101;}
+    z-index: 101;
+}
+
 #CampFireWoodFront {
     width: 20%;
     height: 100%;
@@ -120,43 +135,40 @@ button:hover {
     border-radius: 10px;
 }
 
+#minimalize_window, #maximize_window, #close_window {
+    transition-duration: 0.1s;
+    position: absolute;
+    background-color: #fff;
+    width: 5%;
+    height: 5%;
+    top: 0%;
+}
 
 #minimalize_window {
-    transition-duration: 0.1s;
-    position: absolute;
-    background-color: white;
-    width: 5%;
-    height: 5%;
     right: 10%;
-    top: 0%;}
+}
+
 #maximize_window {
-    transition-duration: 0.1s;
-    position: absolute;
-    background-color: white;
-    width: 5%;
-    height: 5%;
     right: 5%;
-    top: 0%;}
+}
+
 #close_window {
-    transition-duration: 0.1s;
-    position: absolute;
-    background-color: white;
-    width: 5%;
-    height: 5%;
     right: 0%;
-    top: 0%;}
-:hover#maximize_window {
+}
+
+:hover#maximize_window, :hover#minimalize_window {
     transition-duration: 0.1s;
-    background-color: lightgray;}
-:hover#minimalize_window {
-    transition-duration: 0.1s;
-    background-color: lightgray;}
+    background-color: #d3d3d3;
+}
+
 :hover#close_window {
     transition-duration: 0.1s;
-    background-color: red;
-    color: white;}
+    background-color: #f00;
+    color: #fff;
+}
+
 .function_window_text {
-    color: black;
+    color: #000;
     cursor: default;
     position: relative;
     text-align: center;
@@ -165,4 +177,5 @@ button:hover {
     top: -15%;
     left: 40%;
     font-family: 'Source Code Pro', monospace;
-    font-weight: 1000;}
+    font-weight: 1000;
+}

@@ -143,9 +143,9 @@ def Quiz():
     Difficulty()
     SplitCorrection()
     FinalCorrection()
-    #For loop ami végig megy az összes kérdésen és ahoz tartozó válaszon majd kiírja őket
+    #For loop, ami végig megy az összes kérdésen és ahhoz tartozó válaszon majd kiírja őket
     for q in range(1, numberOfQuestions + 1):
-        #Meg nyitja a kivánt txt file-t
+        #Megnyitja a kivánt txt file-t
         with open(txtName, "r", encoding="utf8") as x:
             #Ki olvassa a txt file sorait
             lines = x.readlines()
@@ -178,52 +178,39 @@ def Quiz():
     #Meg kérdezi akarsz-e ujra játszani
     restart = str(input("Akarsz újra játszani?: "))
     #Szimpla while loop ami nézi hogy a válasz igen vagy sem ha a válasz nem igen vagy nem vissza dobja azt hogy Igen-t vagy nem-et kell megadni
-    while (restart != "igen" ) or (restart != "Igen"):
-        if (restart == "igen") or (restart == "Igen"):
+    while restart.lower() != "igen":
+        if restart.lower() != "igen":
             Quiz()
-        #Ha a válas nem kilép a programból
+        #Ha a válasz nem, akkor kilép a programból
         elif (restart == "nem") or (restart == "Nem"):
-            print("Találkozunk késöbb")
+            print("Találkozunk később")
             time.sleep(5)
             exit()
-        print('Hiba, kérem adjon meg helyes választ "Igen" vagy "Nem"!')
+        print('Hiba, kérem adjon meg helyes választ: "Igen" vagy "Nem"!')
         time.sleep(1)
         restart = str(input("Akarsz újra játszani?: "))       
+
 #Szipla quiz készitő funciton
 def QuizMaker():
-    quest = 0
-    answerOne = 1
-    answerTwo = 2
-    answerThree = 3
-    answerFour = 4
     txtfile = str(input("Adja meg a kivánt txt file nevét (Ez tartja majd a kérdéseket!): "))
 
     while True:
         with open(txtfile + ".txt", "a", encoding="utf8") as x:
-            x.write(str(input("Adjon meg egy kérdést: ")))
+            x.write(str(input("Adjon meg egy kérdést: ")) + "\n")
+
+            for element in ["első", "második", "harmadik", "negyedik"]
+                x.write(str(input("Adja meg az {} választ a kérdésre: ".format(element))) + "\n")
+
             x.write("\n")
-            x.write(str(input("Adja meg az első választ a kérdésre: ")))
-            x.write("\n")
-            x.write(str(input("Adja meg az második választ a kérdésre: ")))
-            x.write("\n")
-            x.write(str(input("Adja meg az harmadik választ a kérdésre: ")))
-            x.write("\n")
-            x.write(str(input("Adja meg az negyedik választ a kérdésre: ")))
-            for newline in range(2):
-                x.write("\n")
             print("Kérdés sikeresen hozzáadva!")
 
         check = str(input("Szerednéd le ellenőrizni?: "))
         if check == "igen":
-                with open(txtfile + ".txt", "r", encoding="utf8") as x:
-                    lines = x.readlines()
-                    print("\n")
-                    print(lines[quest])
-                    print(lines[answerOne])
-                    print(lines[answerTwo])
-                    print(lines[answerThree])
-                    print(lines[answerFour])
-                    time.sleep(1)
+            with open(txtfile + ".txt", "r", encoding="utf8") as x:
+                lines = x.readlines()
+                print("\n")
+                for i in range(4): print(lines[i])
+                time.sleep(1)
         else:
             print("ok")
 
@@ -231,12 +218,11 @@ def QuizMaker():
 question = str(input("Kezdhetünk?: "))
 
 #Szimpla while loop ami nézi hogy a válasz igen vagy sem ha a válasz NEM igen vagy nem vissza dobja azt hogy Igen-t vagy nem-et kell megadni
-while (question != "igen" ) or (question != "Igen"):
+while question.lower() != "igen":
     #Ha a válasz IGEN a program tovább halad a következő kérdésre
-    if (question == "igen") or (question == "Igen"):
-
+    if question.lower() != "igen":
         #Ha igent választunk megkérdezi quiz-t akrunk csinálni vagy az eleve megcsinált quiz-t játszani
-        question2 = int(input("Quizt irnál vagy probálnál? (1 / 2): "))
+        question2 = int(input("Quiz-t írnál vagy probálnál? (1 / 2): "))
         while (question2 != 1) or (question2 != 2):
             #Elindítja a Quiz készitő programot ha a válasz 1
             if question2 == 1:
@@ -249,15 +235,15 @@ while (question != "igen" ) or (question != "Igen"):
             #Ha a válasz question 2-re nem 1 vagy 2 vissza dobja a kérdést
             else:
                 print("Adjon meg egy valid számot 1 és 2 között")
-                question2 = int(input("Quizt irnál vagy probálnál? (1 / 2): "))
+                question2 = int(input("Quiz-t írnál vagy probálnál? (1 / 2): "))
 
     #Ha a válasz NEM kilép a programból
-    elif (question == "nem") or (question == "Nem"):
-        print("Találkozunk késöbb")
+    elif question.lower() == "nem":
+        print("Találkozunk később")
         time.sleep(5)
         exit()
 
     #Hiba üzenet ami meg ami megszabja hogy igen-t vagy nem-et adj meg + vissza dobja a kérdést hogy müködjön a while loop 
-    print('Hiba, kérem adjon meg helyes választ "Igen" vagy "Nem"!')
+    print('Hiba, kérem adjon meg egy helyes választ: "Igen" vagy "Nem"!')
     time.sleep(1)
     question = str(input("Kezdhetünk?: "))
