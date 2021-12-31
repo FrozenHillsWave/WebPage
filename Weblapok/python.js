@@ -441,16 +441,16 @@ function AnswerChecking() {
                     break;
             };
         };
-    });
 
-    function buttonHandler(num) {
-        Running = true;
-        if (Answers[num].split("@", 2).length == 2) {
-            correctAnswerCounter++;
-            QuestionVis.style.backgroundColor = "green";
-        } else {
-            QuestionVis.style.backgroundColor = "red";
-            //console.log("Wrong Answer")
-        };
-    }
+        function buttonHandler(num) {
+            Running = true;
+            if (Answers[num].split("@", 2).length == 2) {
+                correctAnswerCounter++;
+                QuestionVis.style.backgroundColor = "green";
+            } else {
+                QuestionVis.style.backgroundColor = "red";
+                //console.log("Wrong Answer")
+            };
+        }
+    });
 };
