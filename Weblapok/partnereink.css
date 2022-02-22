@@ -16,17 +16,19 @@ a:any-link {
     width: 30%;
     height: 30%;
     transform: skew(17.5deg);    
-    background-color: #00aeff
+    background-color: #0077ff;
 }
 
 .member-div:hover {
-    background-color: #0091d4d3;
+    filter: brightness(0.8);
+    background-color: #0077ff;
+
 }
 
 h1 {
     position: absolute;
     font-family: 'Comfortaa', cursive;
-    font-size: 35px;
+    font-size: 2.25rem;
     top: 0%;
     left: 30%;
     transform: skew(-10deg);
@@ -35,7 +37,7 @@ h1 {
 h2 {
     position: absolute;
     font-family: 'Comfortaa', cursive;
-    font-size: 25px;
+    font-size: 1.5rem;
     top: 25%;
     left: 57.5%;
     transform: skew(-10deg);
@@ -44,7 +46,7 @@ h2 {
 h3 {
     position: absolute;
     font-family: 'Comfortaa', cursive;
-    font-size: 20px;
+    font-size: 1.5rem;
     top: 60%;
     left: 60%;
     transform: skew(-10deg);
