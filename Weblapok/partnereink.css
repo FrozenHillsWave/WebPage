@@ -2,8 +2,8 @@
 
 body {
     background-image: url("https://cdn.discordapp.com/attachments/776192464057925632/900386340653371452/Subtle-Lines-Abstract-Gradient-Background-Purple.jpg");
-    background-size: cover;
-    background-repeat: repeat-x;
+    background-size: contain;
+    background-repeat: repeat;
 }
 
 a:any-link {
@@ -17,18 +17,19 @@ a:any-link {
     height: 30%;
     transform: skew(17.5deg);    
     background-color: #0077ff;
+    transition-duration: 0.5s;
 }
 
 .member-div:hover {
     filter: brightness(0.8);
     background-color: #0077ff;
-
+    transition-duration: 0.5s;
 }
 
 h1 {
     position: absolute;
     font-family: 'Comfortaa', cursive;
-    font-size: 2.25rem;
+    font-size: 2rem;
     top: 0%;
     left: 30%;
     transform: skew(-10deg);
@@ -37,9 +38,12 @@ h1 {
 h2 {
     position: absolute;
     font-family: 'Comfortaa', cursive;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    height: 20%;
+    width: 45%;
     top: 25%;
-    left: 57.5%;
+    left: 16vw;
     transform: skew(-10deg);
 }
 
@@ -47,8 +51,9 @@ h3 {
     position: absolute;
     font-family: 'Comfortaa', cursive;
     font-size: 1.5rem;
-    top: 60%;
-    left: 60%;
+    text-align: center;
+    top: 50%;
+    left: 65%;
     transform: skew(-10deg);
 }
 .robi {
@@ -66,16 +71,12 @@ h3 {
     left: 7.5%;
 }
 
-#daniel {
-    left: 57.5%;
-}
-
 .david {
     bottom: 10%;
     right: 7.5%;
 }
 
-#photo {
+.photo {
     border-radius: 3%;
     position: relative;
     top: 30%;
@@ -84,7 +85,18 @@ h3 {
     width: 50%;
     height: 60%;
 }
+.photo2 {
+    border-radius: 3%;
+    position: absolute;
+    display: none;
+    top: 30%;
+    left: 5%;
+    transform: skew(0deg);
+    width: 50%;
+    height: 60%;
+}
 
-strong {
+u {
     font-weight: bolder;
+    font-style: italic;
 }

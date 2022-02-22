@@ -1,34 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="HU">
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="partnereink.css">
         <link rel="icon" href="../Képek/TeamWorkWebpageIcon.jpg">
-        <meta charset="UTF-8">
+        <base target="_blank">
         <title>Partnereink</title>
     </head>
     <body>
         <div class="member-div robi">
-            <img id="photo" src="https://th.bing.com/th/id/R.af3ea76117e499724bebdb6faec18db8?rik=fcDXoI4i0gMFnw&pid=ImgRaw&r=0" alt="">
-            <h2>Partner választó: Zsigó Róbert</h2>
-            <a href="https://www.att.com/" target="_blank"><h1>Partner Weblap</h1></a>
-            <h3>Partnerek: <strong>AT&T</strong> <br> <strong>Dechatlon</strong> </h3>
+            <img class="photo" src="https://th.bing.com/th/id/R.af3ea76117e499724bebdb6faec18db8?rik=fcDXoI4i0gMFnw&pid=ImgRaw&r=0">
+            <img class="photo2" src="https://assets.i2wdev.com/media/W1siZiIsIjIwMTgvMTEvMjEvNTZwYzN1Zmw0dF9EZWNhdGhsb25fTG9nb18xNl85LnBuZyJdLFsicCIsInBhZGRlZF90aHVtYiIsIjgwMHg0NTAiLHsiYmciOiJ3aGl0ZSJ9XV0/febdf7c47f2e73c7/Decathlon_Logo-16-9.png">
+            <h2>Partnert választotta: Zsigó Róbert</h2>
+            <h1>Partner Weblap</h1>
+            <h3>Partnerek: <br> <a href="https://www.att.com/"><u>AT&T</u></a> <br> <a href="https://www.decathlon.hu/"><u>Decathlon</u></a></h3>
         </div>
         <div class="member-div darius">
-            <img id="photo" src="../Képek/Bethesda.png" alt="">
-            <h2>Partner választó: Bozóki Dáriusz Alexander</h2>
-            <a href="https://bethesda.net/en/dashboard" target="_blank"><h1>Partner Weblap</h1></a>
-            <h3>Partnerek: <strong>Bethesda</strong> <br> <strong>Stitch Fix</strong></h3>
+            <img class="photo" src="../Képek/Bethesda.png">
+            <img class="photo2" src="https://digital.hbs.edu/platform-rctom/wp-content/uploads/sites/4/2017/11/Featured-Picture-1-373x200.png">
+            <h2>Partnert választotta: Bozóki Dáriusz Alexander</h2>
+            <h1>Partner Weblap</h1>
+            <h3>Partnerek: <br> <a href="https://bethesda.net/en/dashboard"><u>Bethesda</u></a> <br> <a href="https://www.stitchfix.com/"><u>Stitch Fix</u></a></h3>
         </div>
         <div class="member-div daniel">
-            <img id="photo" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Msi-Logo.jpg" alt="">
-            <h2 id="daniel">Partner választó: Sótonyi Dániel</h2>
-            <a href="https://www.msi.com/index.php" target="_blank"><h1>Partner Weblap</h1></a>
-            <h3>Partnerek: <strong>MSI</strong> <br> <strong>Nike</strong></h3>
+            <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Msi-Logo.jpg">
+            <img class="photo2" src="https://static.nike.com/a/images/f_jpg,q_auto:eco/61b4738b-e1e1-4786-8f6c-26aa0008e80b/swoosh-logo-black.png">
+            <h2 id="daniel">Partnert választotta: Sótonyi Dániel</h2>
+            <h1>Partner Weblap</h1>
+            <h3>Partnerek: <br> <a href="https://www.msi.com/index.php"><u>MSI</u></a> <br> <a href="https://www.nike.com/hu"><u>Nike</u></a></h3>
         </div>
         <div class="member-div david">
-            <img id="photo" src="../Képek/EA.jpg" alt="">
-            <h2>Partner választó: Kovács Dávid</h2>
-            <a href="https://www.ea.com/" target="_blank"><h1>Partner Weblap</h1></a>
-            <h3>Partnerek: <strong>EA</strong> <br> <strong>Adidas</strong></h3>
+            <img class="photo" src="../Képek/EA.jpg">
+            <img class="photo2" src="https://oriasshop.cdn.shoprenter.hu/custom/oriasshop/image/cache/w370h280/Logo/adidas-equipment-logo.jpg?lastmod=0.1620802234">
+            <h2>Partnert választotta: Kovács Dávid</h2>
+            <h1>Partner Weblap</h1>
+            <h3>Partnerek: <br> <a href="https://www.ea.com/" ><u>EA</u></a> <br> <a href="https://www.adidas.hu/"><u>Adidas</u></a></h3>
         </div>
+
+        <script>
+            const img = document.querySelectorAll('img');
+            const img2 = document.querySelectorAll('.photo2')
+            for (let x = 0; x < img.length; x++) {
+                img[x].addEventListener("click", () => {
+                if (img[x].classList.contains('photo') == true) {
+                    for (let i = 0; i < img2.length; i++) {
+                        img2[i].style.display = "block"
+                    }
+                } else {
+                    for (let i = 0; i < img2.length; i++) {
+                        img2[i].style.display = "none"
+                    }
+                }
+            })
+            };
+        </script>
     </body>
 </html>
