@@ -8,6 +8,7 @@
         <title>Partnereink</title>
     </head>
     <body>
+        <!--Div ami tartalmazza Robi által választott partnereket és elérhetőségüket-->
         <div class="member-div robi">
             <img class="photo" src="https://th.bing.com/th/id/R.af3ea76117e499724bebdb6faec18db8?rik=fcDXoI4i0gMFnw&pid=ImgRaw&r=0">
             <img class="photo2" src="https://assets.i2wdev.com/media/W1siZiIsIjIwMTgvMTEvMjEvNTZwYzN1Zmw0dF9EZWNhdGhsb25fTG9nb18xNl85LnBuZyJdLFsicCIsInBhZGRlZF90aHVtYiIsIjgwMHg0NTAiLHsiYmciOiJ3aGl0ZSJ9XV0/febdf7c47f2e73c7/Decathlon_Logo-16-9.png">
@@ -15,6 +16,7 @@
             <h1>Partner Weblap</h1>
             <h3>Partnerek: <br> <a href="https://www.att.com/"><u>AT&T</u></a> <br> <a href="https://www.decathlon.hu/"><u>Decathlon</u></a></h3>
         </div>
+        <!--Div ami tartalmazza Dáriusz által választott partnereket és elérhetőségüket-->
         <div class="member-div darius">
             <img class="photo" src="../Képek/Bethesda.png">
             <img class="photo2" src="https://digital.hbs.edu/platform-rctom/wp-content/uploads/sites/4/2017/11/Featured-Picture-1-373x200.png">
@@ -22,6 +24,7 @@
             <h1>Partner Weblap</h1>
             <h3>Partnerek: <br> <a href="https://bethesda.net/en/dashboard"><u>Bethesda</u></a> <br> <a href="https://www.stitchfix.com/"><u>Stitch Fix</u></a></h3>
         </div>
+        <!--Div ami tartalmazza Dániel által választott partnereket és elérhetőségüket-->
         <div class="member-div daniel">
             <img class="photo" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Msi-Logo.jpg">
             <img class="photo2" src="https://static.nike.com/a/images/f_jpg,q_auto:eco/61b4738b-e1e1-4786-8f6c-26aa0008e80b/swoosh-logo-black.png">
@@ -29,6 +32,7 @@
             <h1>Partner Weblap</h1>
             <h3>Partnerek: <br> <a href="https://www.msi.com/index.php"><u>MSI</u></a> <br> <a href="https://www.nike.com/hu"><u>Nike</u></a></h3>
         </div>
+        <!--Div ami tartalmazza Dávid által választott partnereket és elérhetőségüket-->
         <div class="member-div david">
             <img class="photo" src="../Képek/EA.jpg">
             <img class="photo2" src="https://oriasshop.cdn.shoprenter.hu/custom/oriasshop/image/cache/w370h280/Logo/adidas-equipment-logo.jpg?lastmod=0.1620802234">
@@ -38,8 +42,10 @@
         </div>
 
         <script>
+            //img és img2 variable-ökbe kiválasztjuk az összes img-t és photo2 osztályú elemeket
             const img = document.querySelectorAll('img');
-            const img2 = document.querySelectorAll('.photo2')
+            const img2 = document.querySelectorAll('.photo2');
+            //Figyelőt teszünk az összes képre, hogyha rákattintunk és nem a második kép van megjelenítve akkor megjelenik az, és vica-versa
             for (let x = 0; x < img.length; x++) {
                 img[x].addEventListener("click", () => {
                 if (img[x].classList.contains('photo') == true) {
