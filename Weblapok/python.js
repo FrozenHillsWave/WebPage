@@ -1,55 +1,55 @@
-var numberOfApps = 10;
-var CurrentAppIconWidthList =  [];
-
 function NeonBorder() {
     //Készitünk egy neon keretet
     neonframe = document.createElement("div");
     document.querySelector("body").appendChild(neonframe);
     neonframe.style.position = "absolute";
+    //Tized másodpercentént allítja a helyzetét és a magasságát/szélességét
     setInterval(() => {
-        var FreeSpace = window.innerWidth - neonframe.offsetWidth;
-        var TopMargin = window.innerHeight - neonframe.offsetHeight;
+        let FreeSpace = window.innerWidth - neonframe.offsetWidth;
+        let TopMargin = window.innerHeight - neonframe.offsetHeight;
         neonframe.style.left = parseInt(FreeSpace/2);
         neonframe.style.top = parseInt(TopMargin/2);
         neonframe.style.height = window.innerHeight / 1.15;
         neonframe.style.width = window.innerWidth / 1.05;
         neonframe.style.border = "10px solid #1167b1";
         neonframe.style.filter = "drop-shadow(0 0 15px #59bfff) contrast(200%)";
-    }, 99);
+    }, 100);
 };
- 
-function AppIconCreation() {
-    CurrentAppIconWidth = 0
-    list = []
 
-    for (let index = 0; index < numberOfApps; index++) {
-        AppIconHolder = document.createElement("div");
-        document.querySelector('section').appendChild(AppIconHolder);
+const numberOfAnswerBoxes = 10;
+var CurrentAppIconWidthList =  [];
+
+//Válasz grafikusmutatására használt div-eknek generálása
+function AnswerBoxGeneration() {
+    CurrentAppIconWidth = 0
+    //Készít div-eket és egy "section" elementbe rakja őket
+    for (let index = 0; index < numberOfAnswerBoxes; index++) {
+        AnswerBox = document.createElement("div");
+        document.querySelector('section').appendChild(AnswerBox);
         
         number = index + 1;
-        newID = document.createAttribute("id", "appIconHolder" + number);
-        AppIconHolder.setAttribute("id", "appIconHolder" + number);
-        list.push(AppIconHolder)
+        AnswerBox.setAttribute("id", "AnswerBox" + number);
 
-        for (let index = 0; index < numberOfApps; index++) {
+        for (let index = 0; index < numberOfAnswerBoxes; index++) {
             CurrentAppIconWidthList.push(CurrentAppIconWidth)
-            CurrentAppIconWidth += document.getElementById("appIconHolder1").offsetWidth / numberOfApps
+            CurrentAppIconWidth += document.getElementById("AnswerBox1").offsetWidth / numberOfAnswerBoxes
         };
-        for (let x = 0; x < numberOfApps; x++) {     
+        for (let x = 0; x < numberOfAnswerBoxes; x++) {     
             setInterval(() => {
                 MaxWidth = document.getElementById("system-tray").offsetWidth
-                AppIconWidth = document.getElementById("appIconHolder" + (x+1)).style.width = MaxWidth / numberOfApps;
-                document.getElementById("appIconHolder" + (x+1)).style.marginLeft = CurrentAppIconWidthList[x];
+                AppIconWidth = document.getElementById("AnswerBox" + (x+1)).style.width = MaxWidth / numberOfAnswerBoxes;
+                document.getElementById("AnswerBox" + (x+1)).style.marginLeft = CurrentAppIconWidthList[x];
         }, 1);}
 
-        document.getElementById("appIconHolder" + number).style.height = "100%";
-        document.getElementById("appIconHolder" + number).style.position = "absolute";
-        document.getElementById("appIconHolder" + number).style.zIndex = "996";
-        document.getElementById("appIconHolder" + number).style.backgroundColor = "grey";
-        document.getElementById("appIconHolder" + number).style.border = "1px solid black"
+        document.getElementById("AnswerBox" + number).style.height = "100%";
+        document.getElementById("AnswerBox" + number).style.position = "absolute";
+        document.getElementById("AnswerBox" + number).style.zIndex = "996";
+        document.getElementById("AnswerBox" + number).style.backgroundColor = "grey";
+        document.getElementById("AnswerBox" + number).style.border = "1px solid black"
         };
 };
 
+//Tábortűz tűz animáció
 done = true;
 function CampfireBlaze() {
     done = false;
@@ -97,12 +97,13 @@ function CampfireBlaze() {
     };
 };
 
-
+//Normás error vissza jelző
 function BasicError(Option1, Option2) {
     error = document.createElement("p");
     document.querySelector('.python-page-lower').appendChild(error);
     error.innerHTML = 'Hiba, kérem adjon meg helyes választ ' + Option1 + ' vagy '+ Option2 +'!'
 };
+//Input eltüntető
 function ReplaceingUsedInputs(replaceHolder, replaceText, replaceItem) {
     replacement = document.createElement("span");
     document.querySelector(replaceHolder).appendChild(replacement);
@@ -113,7 +114,7 @@ function ReplaceingUsedInputs(replaceHolder, replaceText, replaceItem) {
 
 var FirstQuestionCounter = 1
 var SecondQuestionCounter = 1
-
+//Quiz első kérdésének variációi
 function QuizFirstQuestionError() {
     BasicError('"Igen"', '"Nem"');
 
@@ -161,7 +162,7 @@ function QuizFirstQuestionPositive() {
     SecondQuestionCounter += 1;
 };
 
-
+//Quiz második kérdésének variációi
 function QuizSecondQuestionError() {
     BasicError('"1"', '"2"');
 
@@ -220,7 +221,7 @@ function QuizTestBegin() {
     AnswerInputItem = document.getElementById("AnswerInput2_" + SecondQuestionCounter);
     ReplaceingUsedInputs('#SecondQuestion' + (SecondQuestionCounter - 1), AnswerInputItem.value, AnswerInputItem)
 };
-
+//Python teljes appjára felszólitó function
 var FullPythonCounter = 1;
 var FullVersionQuestionCounter = 1;
 function FullPythonAppWarning() {
@@ -252,10 +253,11 @@ function FullPythonAppWarning() {
     FullVersionQuestionCounter++;
 };
 
-var numberOfAnswers = 4;
+const numberOfAnswers = 4;
 var Running = true;
 var Runned = 1;
 var AnswerCounter = 0;
+//A valódi quiz amit az emberek ki is probálnak
 function ActualQuiz() {
     try {
         if (FullPythonCounter == 1) {
@@ -319,6 +321,7 @@ function ActualQuiz() {
     Runned++;
 };
 
+//Vegső eredményeket kiíró function
 var Finished = false;
 var correctAnswerCounter = 0;
 function Finish() {
@@ -327,21 +330,21 @@ function Finish() {
     document.createAttribute("id", "Finish");
     finish.setAttribute("id", "Finish");
     document.querySelector(".python-page-lower").appendChild(finish);
-    finish.innerHTML = "A végső eredmény: " + correctAnswerCounter + "/" + numberOfApps;
+    finish.innerHTML = "A végső eredmény: " + correctAnswerCounter + "/" + numberOfAnswerBoxes;
 };
-
+//Ablack betöltéskor milyen functionök fussanak le
 window.onload = function() {
     NeonBorder();
-    AppIconCreation();
+    AnswerBoxGeneration();
     setInterval(() => {
         if (done == true) {
             CampfireBlaze();
         };
     }, 10);
 };
-
-document.addEventListener("keydown", function () {
-    var FirstQuestion = document.getElementById("AnswerInput" + FirstQuestionCounter).value;
+//Az első kérdés inputot checkolja
+window.addEventListener("keydown", function () {
+    const FirstQuestion = document.getElementById("AnswerInput" + FirstQuestionCounter).value;
     if (event.keyCode == "13" && FirstQuestion.length != 0) {
         switch (FirstQuestion) {
             case "igen":
@@ -359,7 +362,7 @@ document.addEventListener("keydown", function () {
         };
     };
 });
-
+//Második kérdés inputot checkolja
 function Second() {
     document.addEventListener("keydown", function () {
         var SecondQuestion = document.getElementById("AnswerInput2_" + SecondQuestionCounter).value;
@@ -379,12 +382,11 @@ function Second() {
         };
     });
 };
-
+//Function ami figyeli mit irt be a felhasználó és befejezte-e már a quiz-t illetve a nehézség input válasza alapján ad nehézséget
 function Difficulty() {
     document.addEventListener("keydown", function () {
         var DifficultyChoosing = document.getElementById("DifficultyInput").value;
-        if (event.keyCode == "13" && DifficultyChoosing.length != 0) { 
-            
+        if (event.keyCode == "13" && DifficultyChoosing.length != 0) {
             switch (DifficultyChoosing) {
                 case "1":
                     setInterval(() => {
@@ -406,10 +408,10 @@ function Difficulty() {
         };
     });
 };
-
+//A válaszok leelözésére figyel
 function AnswerChecking() {
     document.addEventListener("keydown", function () {
-        var QuestionVis = document.getElementById("appIconHolder" + (Runned - 1));
+        var QuestionVis = document.getElementById("AnswerBox" + (Runned - 1));
         var Answer = document.getElementById("QuizAnswerInput" + (Runned - 1)).value;
         if (event.keyCode == "13" && Answer.length != 0) {
             AnswerInputItem = document.getElementById("QuizAnswerInput" + (Runned - 1));
@@ -419,11 +421,11 @@ function AnswerChecking() {
                 case "1":
                     Running = true;
                     if (Answers[AnswerCounter-4].split("@", 2).length == 2) {
-                        QuestionVis.style.backgroundColor = "green";
+        8                QuestionVis.style.backgroundColor = "green";
                         correctAnswerCounter++;
                     } else {
                         QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
+                        //console.log("Rossz válasz")
                     };
                     break;
                 case "2":
@@ -433,7 +435,7 @@ function AnswerChecking() {
                         QuestionVis.style.backgroundColor = "green";
                     } else {
                         QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
+                        //console.log("Rossz válasz")
                     };
                     break;
                 case "3":
@@ -443,7 +445,7 @@ function AnswerChecking() {
                         QuestionVis.style.backgroundColor = "green";
                     } else {
                         QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
+                        //console.log("Rossz válasz")
                     };
                     break;
                 case "4":
@@ -453,14 +455,14 @@ function AnswerChecking() {
                         QuestionVis.style.backgroundColor = "green";
                     } else {
                         QuestionVis.style.backgroundColor = "red";
-                        //console.log("Wrong Answer")
+                        //console.log("Rossz válasz")
                     };
                     break;
                 default:
                     Running = true;
                     QuestionVis.style.backgroundColor = "red";
-                    console.log("Invalid Answer");
-                    //Throwing back the "Asnwer" question and warning
+                    console.log("Rossz válasz");
+                    //Vissza dobja a kérdést és figyelmezeteti a felhasználót!
                     break;
             };
         };
