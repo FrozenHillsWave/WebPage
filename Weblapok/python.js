@@ -1,20 +1,7 @@
 var numberOfApps = 10;
 var CurrentAppIconWidthList =  [];
 
-function CustomBackgroundGeneration() {
-    background = document.createElement("img");
-    document.querySelector('body').appendChild(background);
-    background.src = "../Képek/PythonBackgroundBase.jpg";
-    background.style.position = "absolute";
-    background.style.filter = "brightness(40%)";
-    background.style.webkitUserDrag = "none";
-    setInterval(() => {
-        background.style.height = window.innerHeight;
-        background.style.width = window.innerWidth;
-        background.style.left = 0;
-        background.style.top = 0;
-    }, 100);
-
+function NeonBorder() {
     //Készitünk egy neon keretet
     neonframe = document.createElement("div");
     document.querySelector("body").appendChild(neonframe);
@@ -344,7 +331,7 @@ function Finish() {
 };
 
 window.onload = function() {
-    CustomBackgroundGeneration();
+    NeonBorder();
     AppIconCreation();
     setInterval(() => {
         if (done == true) {
