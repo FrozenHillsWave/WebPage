@@ -1,5 +1,8 @@
 body {
     overflow-x: hidden;
+    background-image: "../Képek/PythonBackgroundBase.jpg";
+    position = "absolute";
+    filter = "brightness(40%)";
 }
 
 .python-page-upper {
