@@ -7,19 +7,19 @@ function maximize() {
 function minimalize() {
   alert("Ablak minimalizálva!");
 }
-
+//Ha enter-t nyomunk meghívja a commands function-t
 document.addEventListener("keydown", function () {
   if (event.keyCode == "13") {
     commands()
   };
 });
-
+//Kitörli az input tartalmát fel másodperc után a felhasználó leütötte az enter-t
 function ClearInput() {
   setTimeout(() =>
   document.getElementById("commandprompt_input").value = "",
   500
 )};
-//Leel
+//Ellenőrzi az input tartalmát és a tartalom alapján "válaszol"
 function commands() {
     commandList = ["ping", "pong", "partnereink", "logonk", "tagok", "python"]
     var command = document.getElementById("commandprompt_input").value;
@@ -67,7 +67,7 @@ function commands() {
             break;
     };
 };
-Meghivja a hex generátort és beszinezi a div-eket a generált színre
+//Meghivja a hex generátort és beszinezi a div-eket a generált színre
 window.onload = function() {
   HexGenerator()
 
