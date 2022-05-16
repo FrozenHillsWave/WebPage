@@ -19,7 +19,7 @@ function ClearInput() {
   document.getElementById("commandprompt_input").value = "",
   500
 )};
-
+//Leel
 function commands() {
     commandList = ["ping", "pong", "partnereink", "logonk", "tagok", "python"]
     var command = document.getElementById("commandprompt_input").value;
@@ -67,7 +67,7 @@ function commands() {
             break;
     };
 };
-
+Meghivja a hex generátort és beszinezi a div-eket a generált színre
 window.onload = function() {
   HexGenerator()
 
@@ -77,7 +77,7 @@ window.onload = function() {
   document.getElementById("card3").style.backgroundColor = HexColor;
 }
 
-
+//Random generál HEX színeket
 function HexGenerator() {
   HEXHolder = [];
   for (let index = 0; index < 6; index++) {
