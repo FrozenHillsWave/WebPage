@@ -1,19 +1,19 @@
 body {
-    overflow-x: hidden;
+    overflow: hidden;
     background-image: url("../Képek/PythonBackgroundBase.jpg");
     position: absolute;
-    filter: brightness(40%);
+    filter: brightness(100%);
 }
 
 .python-page-upper {
     background-color: white;
-    height: 5%;}
+    height: 5vh;}
 .python-page-lower {
     background-color: black;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 100%;
-    width: 100%;}
+    height: 77.5vh;
+    width: 75vw;}
 .python-page {
     z-index: 100;
     position: absolute;
@@ -26,32 +26,36 @@ body {
 #python-logo {
     -webkit-user-drag: none;
     position: relative;
-    top: 5%;
-    left: 0.5%;
-    height: 90%;}
+    top: 0.5vh;
+    left: 0.5vw;
+    height: 4.5vh;}
 #python-logo-title {
-    top: -1.5%;
-    left: 2.5vw;
-    font-size: 120%;
-    position: absolute;
+    position: relative;
+    top: -5.5vh;
+    left: 3vw;
+    font-size: 1.15vw;
     font-family: Source Code Pro, monospace;
     font-weight: 900;
     color: black;
+    user-select: none; /*Nem lehet kiszelektálni*/
 }
 
 .system-tray {
     opacity: 100%;
     z-index: 2;
-    position: sticky;
-    background-color: black;
+    position: absolute;
+    background-color: #000000;
     height: 5vh;
-    top: 95vh;
+    width: 100vw;
+    top: 94vh;
+    left: -0.5vw;
 }
 
 p {
     font-family: 'Courier New', Courier, monospace;
     position: relative;
-    left: 1%;
+    left: 1vw;
+    font-size: 0.95vw;
     color: white;
 }
 
@@ -63,23 +67,11 @@ input {
     position: relative;
     right: 5px;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 100%;
+    font-size: 1.2vw;
     background-color: transparent;
     color: white;}
 input:focus {
     outline: none;}
-
-button {
-    border: none;
-    position: relative;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 100%;
-    background-color: transparent;
-    color: white;
-}
-button:hover {
-    color: grey;
-}
 
 #CampFireHolder {
     position: relative;
@@ -90,37 +82,37 @@ button:hover {
     height: 50vh;}
 #CampFireImg {
     position: relative;
-    height: 50%;
-    width: 60%;
-    left: 22.5%;
-    top: 40%;
+    height: 20vh;
+    width: 10vw;
+    left: 5vw;
+    top: 20vh;
     z-index: 103;}
 #CampFireWood1 {
     position: absolute;
-    width: 60%;
-    height: 10%;
-    left: 20%;
-    bottom: 10%;
+    width: 25vh;
+    height: 5vh;
+    left: 8.5vh;
+    bottom: 5.5vh;
     background-color: brown;
     transform: rotate(170deg);
     border-radius: 10px;
     z-index: 102;}
 #CampFireWood2 {
     position: absolute;
-    width: 60%;
-    height: 10%;
-    left: 20%;
-    bottom: 10%;
+    width: 25vh;
+    height: 5vh;
+    left: 8.5vh;
+    bottom: 5.5vh;
     background-color: brown;
     transform: rotate(-350deg);
     filter: brightness(80%);
-    border-radius: 10px;
+    border-radius: 0.5vw;
     z-index: 101;}
 #CampFireWoodFront {
-    width: 20%;
-    height: 100%;
+    width: 2.5vw;
+    height: 5vh;
     background-color: #654321;
-    border-radius: 10px;
+    border-radius: 0.5vw;
 }
 
 
@@ -128,26 +120,26 @@ button:hover {
     transition-duration: 0.1s;
     position: absolute;
     background-color: white;
-    width: 5%;
-    height: 5%;
-    right: 10%;
-    top: 0%;}
+    width: 5vw;
+    height: 5vh;
+    right: 10vw;
+    top: 0;}
 #maximize_window {
     transition-duration: 0.1s;
     position: absolute;
     background-color: white;
-    width: 5%;
-    height: 5%;
-    right: 5%;
-    top: 0%;}
+    width: 5vw;
+    height: 5vh;
+    right: 5vw;
+    top: 0;}
 #close_window {
     transition-duration: 0.1s;
     position: absolute;
     background-color: white;
-    width: 5%;
-    height: 5%;
-    right: 0%;
-    top: 0%;}
+    width: 5vw;
+    height: 5vh;
+    right: 0vw;
+    top: 0;}
 :hover#maximize_window {
     transition-duration: 0.1s;
     background-color: lightgray;}
@@ -159,13 +151,13 @@ button:hover {
     background-color: red;
     color: white;}
 .function_window_text {
+    position: relative;
     color: black;
     cursor: default;
-    position: relative;
     text-align: center;
-    width: 15px;
+    width: 100%;
     height: 10px;
-    top: -15%;
-    left: 40%;
+    top: -1vh;
+    left: 0vw;
     font-family: 'Source Code Pro', monospace;
     font-weight: 1000;}

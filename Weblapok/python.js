@@ -13,7 +13,7 @@ function NeonBorder() {
         neonframe.style.width = window.innerWidth / 1.05;
         neonframe.style.border = "10px solid #1167b1";
         neonframe.style.filter = "drop-shadow(0 0 15px #59bfff) contrast(200%)";
-    }, 100);
+    }, 10);
 };
 
 const numberOfAnswerBoxes = 10;
@@ -32,14 +32,15 @@ function AnswerBoxGeneration() {
 
         for (let index = 0; index < numberOfAnswerBoxes; index++) {
             CurrentAppIconWidthList.push(CurrentAppIconWidth)
-            CurrentAppIconWidth += document.getElementById("AnswerBox1").offsetWidth / numberOfAnswerBoxes
+            CurrentAppIconWidth += document.getElementById("AnswerBox1").offsetWidth / numberOfAnswerBoxes;
         };
         for (let x = 0; x < numberOfAnswerBoxes; x++) {     
             setInterval(() => {
                 MaxWidth = document.getElementById("system-tray").offsetWidth
                 AppIconWidth = document.getElementById("AnswerBox" + (x+1)).style.width = MaxWidth / numberOfAnswerBoxes;
                 document.getElementById("AnswerBox" + (x+1)).style.marginLeft = CurrentAppIconWidthList[x];
-        }, 1);}
+            }, 1);
+        };
 
         document.getElementById("AnswerBox" + number).style.height = "100%";
         document.getElementById("AnswerBox" + number).style.position = "absolute";
@@ -337,9 +338,7 @@ window.onload = function() {
     NeonBorder();
     AnswerBoxGeneration();
     setInterval(() => {
-        if (done == true) {
-            CampfireBlaze();
-        };
+        if (done == true) {CampfireBlaze();};
     }, 10);
 };
 //Az első kérdés inputot checkolja
