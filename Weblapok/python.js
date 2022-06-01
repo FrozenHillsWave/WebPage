@@ -421,7 +421,7 @@ function AnswerChecking() {
                 case "1":
                     Running = true;
                     if (Answers[AnswerCounter-4].split("@", 2).length == 2) {
-        8                QuestionVis.style.backgroundColor = "green";
+                        QuestionVis.style.backgroundColor = "green";
                         correctAnswerCounter++;
                     } else {
                         QuestionVis.style.backgroundColor = "red";
